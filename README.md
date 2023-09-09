@@ -9,7 +9,8 @@
 # Usage
 
 Make sure you have set XRAY_SUBSCRIPTION_URL_PREFIX in .env file with this command:
-```nano /opt/marzban/.env
+```
+nano /opt/marzban/.env
 ```
 Fill it with your domain name of your Subscription
 
@@ -48,7 +49,8 @@ marzban restart
 # استفاده
 
 ابتدا مطمئن شوید متغیر محیطی XRAY_SUBSCRIPTION_URL_PREFIX رو مقدار دهی کردید. با این دستور میتونید متوجه بشید:
-```nano /opt/marzban/.env
+```
+nano /opt/marzban/.env
 ```
 
 مقدار این متغیر رو دامنه ی ساب لینک خودتون قرار بدید.
