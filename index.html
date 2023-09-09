@@ -2607,6 +2607,13 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             return percentage < 40 ? 'border-green-500' : percentage < 80 ? 'border-yellow-600' : 'border-red-500';
         }
 
+        function openFoXrayURL() {
+            var currentURL = window.location.href;
+            var encodedURL = btoa(currentURL);
+            var foXrayURL = 'foxray://yiguo.dev/sub/add/?url=' + encodedURL + '#name';
+            window.location.href = foXrayURL;
+        }
+
         Alpine.data('dataLimit', '0'); // Initialize Alpine data properties
         Alpine.data('dataUsed', '0');
 
@@ -2753,19 +2760,19 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 androidSing: "Android - Download SingBox",
                 appleV2box: "iOS - Download v2Box",
                 apple: "iOS - Download Streisand",
-                addto: "One Click Install",
+                addto: "One Click to Install",
                 addv2: "v2rayNG",
                 addsti: "Streisand",
                 addfox: "FoXray",
                 addneko: "NekoBox",
                 addSing: "SingBox",
                 addv2box: "v2Box",
-                addshdw: "Shadow",
+                addshdw: "ShadowR",
                 addcla: "Clash",
                 addclax: "Clash X",
                 sup: "Support",
-                install: "Click on the download link to download the program for your operating system!",
-                oneClick: "To use Config, just click on the program you are using!",
+                install: "Click on the following buttons to download the program for your operating system!",
+                oneClick: "To use Configs, just click on the program you are using!",
                 restofusage: "Data Usage"
             },
             fa: {
@@ -2806,7 +2813,8 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 addfox: "FoXray",
                 addneko: "NekoBox",
                 addv2box: "v2Box",
-                addshdw: "Shadow",
+                addfox: "FoXray",
+                addshdw: "ShadowR",
                 addSing: "SingBox",
                 addcla: "Clash",
                 addclax: "Clash X",
@@ -2814,7 +2822,49 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 sup: "پشتیبانی",
                 oneClick: "برای استفاده از کانفیگ‌ها کافیه روی برنامه‌ای که استفاده می‌کنید کلیک کنید!",
                 restofusage: "میزان استفاده"
-            }
+            },
+            ru: {
+                active: "активный",
+                limited: "ограниченное",
+                expired: "истекший",
+                disabled: "не активный",
+                dataUsage: "Использование данных: ",
+                expirationDate: "Дата окончания срока: ",
+                resetIntervalDay: "(сбрасывает каждый день)",
+                resetIntervalWeek: "(сбрасывается каждую неделю)",
+                resetIntervalMonth: "(сбрасывается каждый месяц)",
+                resetIntervalYear: "(сбрасывается каждый год)",
+                remainingDays: "оставшиеся дни: ",
+                remainingDaysSufix: " дни",
+                links: "ссылки",
+                apps: "Скачать программы",
+                tutorials: "учебники",
+                subscription: "подписка",
+                language: "язык",
+                settings: "настройки",
+                darkMode: "тёмный режим",
+                copyAll: "скопировать все",
+                proxy: "прокси",
+                tutorial: "руководство",
+                download: "скачать",
+                support: "Поддержка Telegram",
+                windows: "v2rayN",
+                addto: "быстрая настройка",
+                addv2: "v2rayNG",
+                addsti: "Streisand",
+                addfox: "FoXray",
+                addneko: "NekoBox",
+                addv2box: "v2Box",
+                addfox: "FoXray",
+                addshdw: "ShadowR",
+                addSing: "SingBox",
+                addcla: "Clash",
+                addclax: "Clash X",
+                install: "Нажмите на следующие кнопки, чтобы загрузить программу для вашей операционной системы!",
+                sup: "поддерживать",
+                oneClick: "Для быстрой установки конфига, выберите приложение, которое вы используете!",
+                restofusage: "скорость использования"
+            },
         };
         let settings = {
             darkMode: 1,
@@ -2883,15 +2933,19 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             const copyButton = document.getElementById("copyBtn");
             copyButton.addEventListener("click", function () {
                 // Text to copy
-                const subLink = "{{ user.subscription_url }}"
-                let subUrl = `${window.location.origin}{{ user.subscription_url }}`;
-                if (sub.includes("http")) {
-                    subUrl = sub;
-                }
+                const subLinks = "{{ user.links }}"
+
+                const cleanedString = subLinks.replace(/[\[\]']/g, '');
+
+                // Split the cleaned string into an array using ', ' (comma and space) as the delimiter
+                const configArray = cleanedString.split(', ');
+
+                // Join the array elements into a single string with each configuration on a separate line
+                const result = configArray.join('\n');
 
                 // Create a temporary textarea element to hold the text
                 var textArea = document.createElement("textarea");
-                textArea.value = subUrl;
+                textArea.value = result;
 
                 // Append the textarea element to the document
                 document.body.appendChild(textArea);
@@ -2925,7 +2979,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                     <div class="basis-1/3 space-y-5 flex flex-col items-center py-3 sm:ltr:pr-9 sm:rtl:pl-9" x-data>
                         <img src="https://cdn.jsdelivr.net/gh/MuhammadAshouri/marzban-templates@master/template-01/images/marzban.svg"
                             class="w-28" />
-                        <span class="inline-block dark:text-white text-black font-semibold text-lg">{{ user.username
+                        <span class="inline-block text-white text-black font-semibold text-lg">{{ user.username
                             }}</span>
                         <span
                             class="px-4 py-2 rounded-full inline-block shadow-md shadow-green-900 font-bold text-gray-200"
@@ -2939,7 +2993,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                         class="basis-2/3 flex flex-row items-center sm:ltr:pl-9 sm:rtl:pr-9">
                         <div class="data-usage w-full" x-data="progressBar"
                             x-init="Alpine.data( 'progressBar', () => progressBar )">
-                            <div class="dark:text-white text-black text-center mb-2"><span class="font-bold"
+                            <div class="text-white text-black text-center mb-2"><span class="font-bold"
                                     x-text="$t('dataUsage')"></span><span dir="ltr">{{ user.used_traffic | bytesformat
                                     }} / {% if not user.data_limit %}∞{% else %}{{ user.data_limit | bytesformat }}{%
                                     endif %}</span>
@@ -2969,15 +3023,15 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                 </div>
                             </div>
 
-                            <div class="dark:text-white text-black mt-4 text-center"><span class="font-bold"
+                            <div class="text-white mt-4 text-center"><span class="font-bold"
                                     x-text="$t('expirationDate')"></span><span dir="ltr" x-data="{expireDate: ''}"
                                     x-init="Alpine.data( 'expireDate', expireDate = expireDateVar )"
                                     x-text="expireDate"></span></div>
                             <!--2023/06/31 10:43:59-->
-                            <div class="dark:text-white text-black mt-3 text-sm text-center"
+                            <div class="text-white mt-3 text-sm text-center"
                                 x-text="resetInterval == 'year' ? $t('resetIntervalYear') : resetInterval == 'month' ? $t('resetIntervalMonth') : resetInterval == 'week' ? $t('resetIntervalWeek') : resetInterval == 'day' ? $t('resetIntervalDay') : ''">
                             </div>
-                            <div class="dark:text-white text-black mt-5 text-center"><span class="font-bold"
+                            <div class="text-white mt-5 text-center"><span class="font-bold"
                                     x-text="$t('remainingDays')"></span><span>{% if not user.expire %}∞{% else %}{% set
                                     remaining_days = ((user.expire - now().timestamp()) // (24 * 3600)) %}({{
                                     remaining_days | int if (remaining_days | int) > -1 else 0 }}){% endif
@@ -3018,8 +3072,28 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                         </a>
                         <a id="multi-singbox" href=""
                             class="py-3 px-4 inline-flex transition-all gap-x-2 duration-200 justify-center text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg">
+                            <svg class="w-6 h-6" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8.987 4.5C8.987 1.5 10.487 0 13.487 0C13.487 3 11.987 4.5 8.987 4.5ZM7.66 6.133C7.018 5.838 6.282 5.5 5.323 5.5C3.194 5.5 0 7.629 0 11.887C0 16.145 2.7 22 5.323 22C6.121 22 6.653 21.734 7.186 21.468C7.718 21.202 8.25 20.936 9.049 20.936C9.847 20.936 10.512 21.202 11.178 21.468C11.843 21.734 12.508 22 13.307 22C15.142 22 17.014 19.136 17.973 15.956C17.091 15.636 15.327 13.985 15.327 11.887C15.327 9.181 16.564 7.964 17.182 7.557C16.067 6.186 14.515 5.5 13.307 5.5C12.347 5.5 11.443 5.838 10.653 6.133C10.04 6.361 9.496 6.565 9.049 6.565C8.601 6.565 8.159 6.361 7.66 6.133Z"
+                                    fill="white" />
+                            </svg>
                             <span class="sm:text-lg" x-text="$t('addSing')"></span>
+                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M9.17 1.165C9.07551 0.997296 8.92015 0.872344 8.73609 0.816007C8.55202 0.75967 8.35334 0.776261 8.18117 0.862346C8.009 0.948432 7.87652 1.09742 7.81115 1.27847C7.74578 1.45953 7.75253 1.65878 7.83 1.835L8.667 3.51C8.00017 3.9556 7.42938 4.53028 6.98832 5.20012C6.54726 5.86996 6.24487 6.62137 6.099 7.41L5.99 8H18.01L17.901 7.41C17.7551 6.62137 17.4527 5.86996 17.0117 5.20012C16.5706 4.53028 15.9998 3.9556 15.333 3.51L16.171 1.835C16.258 1.65726 16.2713 1.45232 16.2078 1.26486C16.1444 1.07739 16.0095 0.922596 15.8324 0.834197C15.6553 0.745798 15.4505 0.730964 15.2626 0.792928C15.0746 0.854892 14.9188 0.988631 14.829 1.165L13.992 2.839C13.352 2.61401 12.6784 2.49938 12 2.5C11.3216 2.49938 10.648 2.61401 10.008 2.839L9.17 1.165ZM3.5 9C3.10218 9 2.72064 9.15804 2.43934 9.43934C2.15804 9.72064 2 10.1022 2 10.5V15.5C2 15.8978 2.15804 16.2794 2.43934 16.5607C2.72064 16.842 3.10218 17 3.5 17C3.89782 17 4.27936 16.842 4.56066 16.5607C4.84196 16.2794 5 15.8978 5 15.5V10.5C5 10.1022 4.84196 9.72064 4.56066 9.43934C4.27936 9.15804 3.89782 9 3.5 9ZM20.5 9C20.1022 9 19.7206 9.15804 19.4393 9.43934C19.158 9.72064 19 10.1022 19 10.5V15.5C19 15.8978 19.158 16.2794 19.4393 16.5607C19.7206 16.842 20.1022 17 20.5 17C20.8978 17 21.2794 16.842 21.5607 16.5607C21.842 16.2794 22 15.8978 22 15.5V10.5C22 10.1022 21.842 9.72064 21.5607 9.43934C21.2794 9.15804 20.8978 9 20.5 9ZM18 9H6V17.5C6 17.8978 6.15804 18.2794 6.43934 18.5607C6.72064 18.842 7.10218 19 7.5 19H8V21.5C8 21.8978 8.15804 22.2794 8.43934 22.5607C8.72064 22.842 9.10218 23 9.5 23C9.89782 23 10.2794 22.842 10.5607 22.5607C10.842 22.2794 11 21.8978 11 21.5V19H13V21.5C13 21.8978 13.158 22.2794 13.4393 22.5607C13.7206 22.842 14.1022 23 14.5 23C14.8978 23 15.2794 22.842 15.5607 22.5607C15.842 22.2794 16 21.8978 16 21.5V19H16.5C16.8978 19 17.2794 18.842 17.5607 18.5607C17.842 18.2794 18 17.8978 18 17.5V9Z"
+                                    fill="white" />
+                            </svg>
                         </a>
+                        <button type="button" onclick="openFoXrayURL()" id="ios-foxray"
+                            class="py-3 px-4 inline-flex transition-all gap-x-2 duration-200 justify-center text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg">
+                            <svg class="w-6 h-6" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8.987 4.5C8.987 1.5 10.487 0 13.487 0C13.487 3 11.987 4.5 8.987 4.5ZM7.66 6.133C7.018 5.838 6.282 5.5 5.323 5.5C3.194 5.5 0 7.629 0 11.887C0 16.145 2.7 22 5.323 22C6.121 22 6.653 21.734 7.186 21.468C7.718 21.202 8.25 20.936 9.049 20.936C9.847 20.936 10.512 21.202 11.178 21.468C11.843 21.734 12.508 22 13.307 22C15.142 22 17.014 19.136 17.973 15.956C17.091 15.636 15.327 13.985 15.327 11.887C15.327 9.181 16.564 7.964 17.182 7.557C16.067 6.186 14.515 5.5 13.307 5.5C12.347 5.5 11.443 5.838 10.653 6.133C10.04 6.361 9.496 6.565 9.049 6.565C8.601 6.565 8.159 6.361 7.66 6.133Z"
+                                    fill="white" />
+                            </svg>
+
+                            <span class="sm:text-lg" x-text="$t('addfox')"></span>
+                        </button>
                         <a id="ios-streisand" href=""
                             class="py-3 px-4 inline-flex transition-all gap-x-2 justify-center duration-200 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg">
                             <svg class="w-6 h-6" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3054,9 +3128,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 </div>
                 <div class="flex flex-col gap-y-4 mb-8">
                     <h2 class="font-black text-white text-2xl sm:text-3xl mb-2" x-text="$t('apps')"></h2>
-                    <div class="bg-gray-700 px-4 py-2 my-4 rounded-xl shadow-gray-700/50 shadow-lg">
-                        <p x-text="$t('install')" class="text-white font-bold text-sm"></p>
-                    </div>
                     <div class="grid w-full grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-4 mb-6">
                         <a href="https://github.com/2dust/v2rayNG/releases/download/1.8.5/v2rayNG_1.8.5.apk"
                             class="py-3 px-4 transition-all duration-200 inline-flex gap-x-3 justify-center text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg">
@@ -3110,6 +3181,16 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                             </svg>
 
                             <span class="sm:text-lg" x-text="$t('addfox')"></span>
+                        </a>
+                        <a href="https://apps.apple.com/ca/app/shadowrocket/id932747118"
+                            class="py-3 px-4 transition-all duration-200 inline-flex gap-x-3 justify-center text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg">
+                            <svg class="w-6 h-6" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8.987 4.5C8.987 1.5 10.487 0 13.487 0C13.487 3 11.987 4.5 8.987 4.5ZM7.66 6.133C7.018 5.838 6.282 5.5 5.323 5.5C3.194 5.5 0 7.629 0 11.887C0 16.145 2.7 22 5.323 22C6.121 22 6.653 21.734 7.186 21.468C7.718 21.202 8.25 20.936 9.049 20.936C9.847 20.936 10.512 21.202 11.178 21.468C11.843 21.734 12.508 22 13.307 22C15.142 22 17.014 19.136 17.973 15.956C17.091 15.636 15.327 13.985 15.327 11.887C15.327 9.181 16.564 7.964 17.182 7.557C16.067 6.186 14.515 5.5 13.307 5.5C12.347 5.5 11.443 5.838 10.653 6.133C10.04 6.361 9.496 6.565 9.049 6.565C8.601 6.565 8.159 6.361 7.66 6.133Z"
+                                    fill="white" />
+                            </svg>
+
+                            <span class="sm:text-lg" x-text="$t('addshdw')"></span>
                         </a>
                         <a href="https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690"
                             class="py-3 px-4 transition-all duration-200 inline-flex gap-x-3 justify-center text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg">
@@ -3185,9 +3266,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 </button>
 
                 <select id="countries"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option value="fa">فارسی</option>
                     <option value="en">English</option>
+                    <option value="ru">Русский</option>
                 </select>
 
             </div>
