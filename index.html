@@ -5,8 +5,134 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ user.username }} - Sub Info</title>
-    <link href="https://cdn.jsdelivr.net/gh/MuhammadAshouri/marzban-templates@master/template-01/build.css"
-        rel="stylesheet" />
+    <style>
+        /* tooltip settings 👇 */
+
+        .copy {
+            /* button */
+            --button-bg: #353434;
+            --button-hover-bg: #464646;
+            --button-text-color: #CCCCCC;
+            --button-hover-text-color: #8bb9fe;
+            --button-border-radius: 10px;
+            --button-diameter: 36px;
+            --button-outline-width: 1px;
+            --button-outline-color: rgb(141, 141, 141);
+            /* tooltip */
+            --tooltip-bg: #f4f3f3;
+            --toolptip-border-radius: 4px;
+            --tooltip-font-family: Menlo, Roboto Mono, monospace;
+            /* 👆 this field should not be empty */
+            --tooltip-font-size: 12px;
+            /* 👆 this field should not be empty */
+            --tootip-text-color: rgb(50, 50, 50);
+            --tooltip-padding-x: 7px;
+            --tooltip-padding-y: 7px;
+            --tooltip-offset: 8px;
+            /* --tooltip-transition-duration: 0.3s; */
+            /* 👆 if you need a transition, 
+  just remove the comment,
+  but I didn't like the transition :| */
+        }
+
+        .copy {
+            box-sizing: border-box;
+            width: var(--button-diameter);
+            height: var(--button-diameter);
+            border-radius: var(--button-border-radius);
+            background-color: var(--button-bg);
+            color: var(--button-text-color);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            outline: none;
+        }
+
+        .tooltip {
+            position: absolute;
+            opacity: 0;
+            visibility: 0;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font: var(--tooltip-font-size) var(--tooltip-font-family);
+            color: var(--tootip-text-color);
+            background: var(--tooltip-bg);
+            padding: var(--tooltip-padding-y) var(--tooltip-padding-x);
+            border-radius: var(--toolptip-border-radius);
+            pointer-events: none;
+            transition: all var(--tooltip-transition-duration) cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .tooltip::before {
+            content: attr(data-text-initial);
+        }
+
+        .tooltip::after {
+            content: "";
+            position: absolute;
+            bottom: calc(var(--tooltip-padding-y) / 2 * -1);
+            width: var(--tooltip-padding-y);
+            height: var(--tooltip-padding-y);
+            background: inherit;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            z-index: -999;
+            pointer-events: none;
+        }
+
+        .copy svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .checkmark {
+            display: none;
+        }
+
+        /* actions */
+
+        .copy:hover .tooltip,
+        .copy:focus:not(:focus-visible) .tooltip {
+            opacity: 1;
+            visibility: visible;
+            top: calc((100% + var(--tooltip-offset)) * -1);
+        }
+
+        .copy:focus:not(:focus-visible) .tooltip::before {
+            content: attr(data-text-end);
+        }
+
+        .copy:focus:not(:focus-visible) .clipboard {
+            display: none;
+        }
+
+        .copy:focus:not(:focus-visible) .checkmark {
+            display: block;
+        }
+
+        .copy:hover,
+        .copy:focus {
+            background-color: var(--button-hover-bg);
+        }
+
+        .copy:active {
+            outline: var(--button-outline-width) solid var(--button-outline-color);
+        }
+
+        .copy:hover svg {
+            color: var(--button-hover-text-color);
+        }
+
+        .asli {
+            background: url('https://4kwallpapers.com/images/walls/thumbs_3t/8768.jpg') no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
     <style>
         /*
 ! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
@@ -571,6 +697,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             left: 0px;
         }
 
+        .z-10 {
+            z-index: 10;
+        }
+
         .-m-6 {
             margin: -1.5rem;
         }
@@ -578,6 +708,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
         .mx-auto {
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .my-4 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
         }
 
         .mb-2 {
@@ -628,6 +763,22 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             margin-top: 1rem;
         }
 
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+
+        .ml-2 {
+            margin-left: 0.5rem;
+        }
+
+        .ml-2\.5 {
+            margin-left: 0.625rem;
+        }
+
+        .mt-6 {
+            margin-top: 1.5rem;
+        }
+
         .block {
             display: block;
         }
@@ -646,6 +797,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
         .table {
             display: table;
+        }
+
+        .grid {
+            display: grid;
         }
 
         .contents {
@@ -696,6 +851,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             height: 0.75rem;
         }
 
+        .h-2\.5 {
+            height: 0.625rem;
+        }
+
         .min-h-screen {
             min-height: 100vh;
         }
@@ -734,6 +893,18 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
         .w-24 {
             width: 6rem;
+        }
+
+        .w-2 {
+            width: 0.5rem;
+        }
+
+        .w-2\.5 {
+            width: 0.625rem;
+        }
+
+        .w-44 {
+            width: 11rem;
         }
 
         .max-w-2xl {
@@ -790,6 +961,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             resize: both;
         }
 
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .grid-cols-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
         .flex-row {
             flex-direction: row;
         }
@@ -806,12 +985,20 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             align-items: center;
         }
 
+        .justify-start {
+            justify-content: flex-start;
+        }
+
         .justify-center {
             justify-content: center;
         }
 
         .justify-between {
             justify-content: space-between;
+        }
+
+        .gap-2 {
+            gap: 0.5rem;
         }
 
         .gap-x-2 {
@@ -857,9 +1044,20 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
         }
 
+        .divide-y> :not([hidden])~ :not([hidden]) {
+            --tw-divide-y-reverse: 0;
+            border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+            border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+        }
+
         .divide-blue-600> :not([hidden])~ :not([hidden]) {
             --tw-divide-opacity: 1;
             border-color: rgb(37 99 235 / var(--tw-divide-opacity));
+        }
+
+        .divide-gray-100> :not([hidden])~ :not([hidden]) {
+            --tw-divide-opacity: 1;
+            border-color: rgb(243 244 246 / var(--tw-divide-opacity));
         }
 
         .overflow-hidden {
@@ -908,6 +1106,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
         .border-2 {
             border-width: 2px;
+        }
+
+        .border-\[3px\] {
+            border-width: 3px;
         }
 
         .border-b-2 {
@@ -1049,6 +1251,51 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             background-color: rgb(34 197 94 / var(--tw-bg-opacity));
         }
 
+        .bg-green-400 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+        }
+
+        .bg-gray-400 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+        }
+
+        .bg-gray-500 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+        }
+
+        .bg-gray-700 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+        }
+
+        .bg-lime-950 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(26 46 5 / var(--tw-bg-opacity));
+        }
+
+        .bg-gray-950 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(3 7 18 / var(--tw-bg-opacity));
+        }
+
+        .bg-gray-800 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+        }
+
+        .bg-blue-700 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+        }
+
+        .bg-gray-50 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+        }
+
         .bg-opacity-0 {
             --tw-bg-opacity: 0;
         }
@@ -1119,6 +1366,36 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
         }
 
+        .from-amber-500 {
+            --tw-gradient-from: #f59e0b var(--tw-gradient-from-position);
+            --tw-gradient-to: rgb(245 158 11 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+        }
+
+        .from-yellow-500 {
+            --tw-gradient-from: #eab308 var(--tw-gradient-from-position);
+            --tw-gradient-to: rgb(234 179 8 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+        }
+
+        .from-gray-500 {
+            --tw-gradient-from: #6b7280 var(--tw-gradient-from-position);
+            --tw-gradient-to: rgb(107 114 128 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+        }
+
+        .from-slate-500 {
+            --tw-gradient-from: #64748b var(--tw-gradient-from-position);
+            --tw-gradient-to: rgb(100 116 139 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+        }
+
+        .from-emerald-500 {
+            --tw-gradient-from: #10b981 var(--tw-gradient-from-position);
+            --tw-gradient-to: rgb(16 185 129 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+        }
+
         .via-blue-600 {
             --tw-gradient-to: rgb(37 99 235 / 0) var(--tw-gradient-to-position);
             --tw-gradient-stops: var(--tw-gradient-from), #2563eb var(--tw-gradient-via-position), var(--tw-gradient-to);
@@ -1154,6 +1431,46 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             --tw-gradient-stops: var(--tw-gradient-from), #fca5a5 var(--tw-gradient-via-position), var(--tw-gradient-to);
         }
 
+        .via-amber-600 {
+            --tw-gradient-to: rgb(217 119 6 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), #d97706 var(--tw-gradient-via-position), var(--tw-gradient-to);
+        }
+
+        .via-yellow-600 {
+            --tw-gradient-to: rgb(202 138 4 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), #ca8a04 var(--tw-gradient-via-position), var(--tw-gradient-to);
+        }
+
+        .via-yellow-200 {
+            --tw-gradient-to: rgb(254 240 138 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), #fef08a var(--tw-gradient-via-position), var(--tw-gradient-to);
+        }
+
+        .via-yellow-800 {
+            --tw-gradient-to: rgb(133 77 14 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), #854d0e var(--tw-gradient-via-position), var(--tw-gradient-to);
+        }
+
+        .via-yellow-700 {
+            --tw-gradient-to: rgb(161 98 7 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), #a16207 var(--tw-gradient-via-position), var(--tw-gradient-to);
+        }
+
+        .via-gray-600 {
+            --tw-gradient-to: rgb(75 85 99 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), #4b5563 var(--tw-gradient-via-position), var(--tw-gradient-to);
+        }
+
+        .via-slate-600 {
+            --tw-gradient-to: rgb(71 85 105 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), #475569 var(--tw-gradient-via-position), var(--tw-gradient-to);
+        }
+
+        .via-emerald-600 {
+            --tw-gradient-to: rgb(5 150 105 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), #059669 var(--tw-gradient-via-position), var(--tw-gradient-to);
+        }
+
         .to-blue-500 {
             --tw-gradient-to: #3b82f6 var(--tw-gradient-to-position);
         }
@@ -1186,6 +1503,22 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             --tw-gradient-to: #fef08a var(--tw-gradient-to-position);
         }
 
+        .to-yellow-700 {
+            --tw-gradient-to: #a16207 var(--tw-gradient-to-position);
+        }
+
+        .to-gray-700 {
+            --tw-gradient-to: #374151 var(--tw-gradient-to-position);
+        }
+
+        .to-slate-700 {
+            --tw-gradient-to: #334155 var(--tw-gradient-to-position);
+        }
+
+        .to-emerald-700 {
+            --tw-gradient-to: #047857 var(--tw-gradient-to-position);
+        }
+
         .bg-clip-padding {
             background-clip: padding-box;
         }
@@ -1196,6 +1529,26 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
         .fill-current {
             fill: currentColor;
+        }
+
+        .fill-lime-400 {
+            fill: #a3e635;
+        }
+
+        .fill-lime-800 {
+            fill: #3f6212;
+        }
+
+        .fill-lime-950 {
+            fill: #1a2e05;
+        }
+
+        .fill-gray-400 {
+            fill: #9ca3af;
+        }
+
+        .fill-gray-950 {
+            fill: #030712;
         }
 
         .stroke-blue-600 {
@@ -1216,6 +1569,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
         .p-1 {
             padding: 0.25rem;
+        }
+
+        .p-2\.5 {
+            padding: 0.625rem;
         }
 
         .px-4 {
@@ -1283,6 +1640,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             padding-right: 0.375rem;
         }
 
+        .py-2\.5 {
+            padding-top: 0.625rem;
+            padding-bottom: 0.625rem;
+        }
+
         .pb-8 {
             padding-bottom: 2rem;
         }
@@ -1293,6 +1655,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
         .pt-1 {
             padding-top: 0.25rem;
+        }
+
+        .pr-1 {
+            padding-right: 0.25rem;
+        }
+
+        .text-left {
+            text-align: left;
         }
 
         .text-center {
@@ -1421,8 +1791,26 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             color: rgb(217 119 6 / var(--tw-text-opacity));
         }
 
+        .text-lime-400 {
+            --tw-text-opacity: 1;
+            color: rgb(163 230 53 / var(--tw-text-opacity));
+        }
+
+        .text-gray-700 {
+            --tw-text-opacity: 1;
+            color: rgb(55 65 81 / var(--tw-text-opacity));
+        }
+
         .underline {
             text-decoration-line: underline;
+        }
+
+        .opacity-40 {
+            opacity: 0.4;
+        }
+
+        .opacity-100 {
+            opacity: 1;
         }
 
         .shadow-lg {
@@ -1446,6 +1834,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
         .shadow-none {
             --tw-shadow: 0 0 #0000;
             --tw-shadow-colored: 0 0 #0000;
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        }
+
+        .shadow {
+            --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
             box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
         }
 
@@ -1539,8 +1933,122 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             --tw-shadow: var(--tw-shadow-colored);
         }
 
+        .shadow-green-500\/50 {
+            --tw-shadow-color: rgb(34 197 94 / 0.5);
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-amber-500\/50 {
+            --tw-shadow-color: rgb(245 158 11 / 0.5);
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-yellow-500\/50 {
+            --tw-shadow-color: rgb(234 179 8 / 0.5);
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-yellow-200\/50 {
+            --tw-shadow-color: rgb(254 240 138 / 0.5);
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-yellow-300\/50 {
+            --tw-shadow-color: rgb(253 224 71 / 0.5);
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-gray-500\/50 {
+            --tw-shadow-color: rgb(107 114 128 / 0.5);
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-slate-500\/50 {
+            --tw-shadow-color: rgb(100 116 139 / 0.5);
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-emerald-500\/50 {
+            --tw-shadow-color: rgb(16 185 129 / 0.5);
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-gray-700\/50 {
+            --tw-shadow-color: rgb(55 65 81 / 0.5);
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-amber-500 {
+            --tw-shadow-color: #f59e0b;
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-amber-800 {
+            --tw-shadow-color: #92400e;
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-emerald-500 {
+            --tw-shadow-color: #10b981;
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-emerald-800 {
+            --tw-shadow-color: #065f46;
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-gray-500 {
+            --tw-shadow-color: #6b7280;
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-gray-700 {
+            --tw-shadow-color: #374151;
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-gray-800 {
+            --tw-shadow-color: #1f2937;
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-slate-500 {
+            --tw-shadow-color: #64748b;
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-slate-800 {
+            --tw-shadow-color: #1e293b;
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-yellow-200 {
+            --tw-shadow-color: #fef08a;
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-yellow-300 {
+            --tw-shadow-color: #fde047;
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-yellow-500 {
+            --tw-shadow-color: #eab308;
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        .shadow-yellow-800 {
+            --tw-shadow-color: #854d0e;
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
         .outline {
             outline-style: solid;
+        }
+
+        .outline-1 {
+            outline-width: 1px;
         }
 
         .blur {
@@ -1627,8 +2135,32 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             transition-duration: 75ms;
         }
 
+        .duration-100 {
+            transition-duration: 100ms;
+        }
+
         .ease-in {
             transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+        }
+
+        .hover\:bg-lime-900:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(54 83 20 / var(--tw-bg-opacity));
+        }
+
+        .hover\:bg-gray-900:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+        }
+
+        .hover\:bg-blue-800:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(30 64 175 / var(--tw-bg-opacity));
+        }
+
+        .hover\:bg-gray-100:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(243 244 246 / var(--tw-bg-opacity));
         }
 
         .hover\:bg-gradient-to-bl:hover {
@@ -1643,6 +2175,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
             --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
             box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        }
+
+        .focus\:border-blue-500:focus {
+            --tw-border-opacity: 1;
+            border-color: rgb(59 130 246 / var(--tw-border-opacity));
         }
 
         .focus\:outline-none:focus {
@@ -1681,10 +2218,99 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             --tw-ring-color: rgb(94 234 212 / var(--tw-ring-opacity));
         }
 
+        .focus\:ring-red-100:focus {
+            --tw-ring-opacity: 1;
+            --tw-ring-color: rgb(254 226 226 / var(--tw-ring-opacity));
+        }
+
+        .focus\:ring-cyan-300:focus {
+            --tw-ring-opacity: 1;
+            --tw-ring-color: rgb(103 232 249 / var(--tw-ring-opacity));
+        }
+
+        .focus\:ring-green-300:focus {
+            --tw-ring-opacity: 1;
+            --tw-ring-color: rgb(134 239 172 / var(--tw-ring-opacity));
+        }
+
+        .focus\:ring-amber-300:focus {
+            --tw-ring-opacity: 1;
+            --tw-ring-color: rgb(252 211 77 / var(--tw-ring-opacity));
+        }
+
+        .focus\:ring-yellow-300:focus {
+            --tw-ring-opacity: 1;
+            --tw-ring-color: rgb(253 224 71 / var(--tw-ring-opacity));
+        }
+
+        .focus\:ring-gray-300:focus {
+            --tw-ring-opacity: 1;
+            --tw-ring-color: rgb(209 213 219 / var(--tw-ring-opacity));
+        }
+
+        .focus\:ring-slate-300:focus {
+            --tw-ring-opacity: 1;
+            --tw-ring-color: rgb(203 213 225 / var(--tw-ring-opacity));
+        }
+
+        .focus\:ring-emerald-300:focus {
+            --tw-ring-opacity: 1;
+            --tw-ring-color: rgb(110 231 183 / var(--tw-ring-opacity));
+        }
+
+        .focus\:ring-blue-500:focus {
+            --tw-ring-opacity: 1;
+            --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity));
+        }
+
+        .active\:border:active {
+            border-width: 1px;
+        }
+
+        .active\:border-lime-400:active {
+            --tw-border-opacity: 1;
+            border-color: rgb(163 230 53 / var(--tw-border-opacity));
+        }
+
+        .active\:border-gray-400:active {
+            --tw-border-opacity: 1;
+            border-color: rgb(156 163 175 / var(--tw-border-opacity));
+        }
+
         @media (prefers-color-scheme: dark) {
+            .dark\:border-gray-600 {
+                --tw-border-opacity: 1;
+                border-color: rgb(75 85 99 / var(--tw-border-opacity));
+            }
+
+            .dark\:bg-blue-600 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+            }
+
+            .dark\:bg-gray-700 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+            }
+
             .dark\:text-white {
                 --tw-text-opacity: 1;
                 color: rgb(255 255 255 / var(--tw-text-opacity));
+            }
+
+            .dark\:text-gray-200 {
+                --tw-text-opacity: 1;
+                color: rgb(229 231 235 / var(--tw-text-opacity));
+            }
+
+            .dark\:placeholder-gray-400::-moz-placeholder {
+                --tw-placeholder-opacity: 1;
+                color: rgb(156 163 175 / var(--tw-placeholder-opacity));
+            }
+
+            .dark\:placeholder-gray-400::placeholder {
+                --tw-placeholder-opacity: 1;
+                color: rgb(156 163 175 / var(--tw-placeholder-opacity));
             }
 
             .dark\:shadow-lg {
@@ -1718,6 +2344,56 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 --tw-shadow: var(--tw-shadow-colored);
             }
 
+            .dark\:shadow-green-800\/80 {
+                --tw-shadow-color: rgb(22 101 52 / 0.8);
+                --tw-shadow: var(--tw-shadow-colored);
+            }
+
+            .dark\:shadow-amber-800\/80 {
+                --tw-shadow-color: rgb(146 64 14 / 0.8);
+                --tw-shadow: var(--tw-shadow-colored);
+            }
+
+            .dark\:shadow-yellow-800\/80 {
+                --tw-shadow-color: rgb(133 77 14 / 0.8);
+                --tw-shadow: var(--tw-shadow-colored);
+            }
+
+            .dark\:shadow-gray-800\/80 {
+                --tw-shadow-color: rgb(31 41 55 / 0.8);
+                --tw-shadow: var(--tw-shadow-colored);
+            }
+
+            .dark\:shadow-slate-800\/80 {
+                --tw-shadow-color: rgb(30 41 59 / 0.8);
+                --tw-shadow: var(--tw-shadow-colored);
+            }
+
+            .dark\:shadow-emerald-800\/80 {
+                --tw-shadow-color: rgb(6 95 70 / 0.8);
+                --tw-shadow: var(--tw-shadow-colored);
+            }
+
+            .dark\:hover\:bg-blue-700:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+            }
+
+            .dark\:hover\:bg-gray-600:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(75 85 99 / var(--tw-bg-opacity));
+            }
+
+            .dark\:hover\:text-white:hover {
+                --tw-text-opacity: 1;
+                color: rgb(255 255 255 / var(--tw-text-opacity));
+            }
+
+            .dark\:focus\:border-blue-500:focus {
+                --tw-border-opacity: 1;
+                border-color: rgb(59 130 246 / var(--tw-border-opacity));
+            }
+
             .dark\:focus\:ring-blue-800:focus {
                 --tw-ring-opacity: 1;
                 --tw-ring-color: rgb(30 64 175 / var(--tw-ring-opacity));
@@ -1741,6 +2417,51 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             .dark\:focus\:ring-teal-800:focus {
                 --tw-ring-opacity: 1;
                 --tw-ring-color: rgb(17 94 89 / var(--tw-ring-opacity));
+            }
+
+            .dark\:focus\:ring-red-400:focus {
+                --tw-ring-opacity: 1;
+                --tw-ring-color: rgb(248 113 113 / var(--tw-ring-opacity));
+            }
+
+            .dark\:focus\:ring-cyan-800:focus {
+                --tw-ring-opacity: 1;
+                --tw-ring-color: rgb(21 94 117 / var(--tw-ring-opacity));
+            }
+
+            .dark\:focus\:ring-green-800:focus {
+                --tw-ring-opacity: 1;
+                --tw-ring-color: rgb(22 101 52 / var(--tw-ring-opacity));
+            }
+
+            .dark\:focus\:ring-amber-800:focus {
+                --tw-ring-opacity: 1;
+                --tw-ring-color: rgb(146 64 14 / var(--tw-ring-opacity));
+            }
+
+            .dark\:focus\:ring-yellow-800:focus {
+                --tw-ring-opacity: 1;
+                --tw-ring-color: rgb(133 77 14 / var(--tw-ring-opacity));
+            }
+
+            .dark\:focus\:ring-gray-800:focus {
+                --tw-ring-opacity: 1;
+                --tw-ring-color: rgb(31 41 55 / var(--tw-ring-opacity));
+            }
+
+            .dark\:focus\:ring-slate-800:focus {
+                --tw-ring-opacity: 1;
+                --tw-ring-color: rgb(30 41 59 / var(--tw-ring-opacity));
+            }
+
+            .dark\:focus\:ring-emerald-800:focus {
+                --tw-ring-opacity: 1;
+                --tw-ring-color: rgb(6 95 70 / var(--tw-ring-opacity));
+            }
+
+            .dark\:focus\:ring-blue-500:focus {
+                --tw-ring-opacity: 1;
+                --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity));
             }
         }
 
@@ -1798,6 +2519,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 line-height: 1.75rem;
             }
 
+            .sm\:text-3xl {
+                font-size: 1.875rem;
+                line-height: 2.25rem;
+            }
+
             :is([dir="ltr"] .sm\:ltr\:pl-9) {
                 padding-left: 2.25rem;
             }
@@ -1819,13 +2545,16 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             }
         }
 
-        .asli {
-            background: url('https://4kwallpapers.com/images/walls/thumbs_3t/8768.jpg') no-repeat;
-            background-position: center;
-            background-size: cover;
+        @media (min-width: 768px) {
+            .md\:grid {
+                display: grid;
+            }
+
+            .md\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
         }
     </style>
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" /> -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet"
         type="text/css" />
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
@@ -1833,6 +2562,32 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     <script src="https://cdn.jsdelivr.net/npm/alpinejs-i18n@2.4.0/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.2.0/dist/alpine-clipboard.js"></script>
     <script defer>
+        const sub = "{{ user.subscription_url }}"
+        let fullUrl = `${window.location.origin}{{ user.subscription_url }}`;
+        if (sub.includes("http")) {
+            fullUrl = sub;
+        }
+
+        function setHrefs() {
+            document.getElementById("ios-streisand").href = `streisand://import/${fullUrl}`;
+            document.getElementById("ios-v2box").href = `v2box://install-sub?url=${fullUrl}&name=Sub`
+            document.getElementById("ios-shadowrocket").href = `sub://${fullUrl}`;
+            document.getElementById("android-v2rayng").href = `v2rayng://install-config?url=${fullUrl}`;
+            document.getElementById("multi-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#Sub`;
+            document.getElementById("android-nekobox").href = `sn://subscription?url=${fullUrl}&name=Sub`;
+
+
+            // Android Apps
+
+
+            // PC Apps
+
+
+            // Multi Os Apps
+
+        }
+
+
         function calculatePercentage(used, limit) {
             const parsedUsed = parseFloat(used);
             const parsedLimit = parseFloat(limit);
@@ -1980,7 +2735,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 remainingDays: "Remaining Days: ",
                 remainingDaysSufix: " Days",
                 links: "Links",
-                apps: "Apps",
+                apps: "Download Apps",
                 tutorials: "Tutorials",
                 subscription: "Subscription",
                 language: "Language",
@@ -1991,9 +2746,27 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 tutorial: "Tutorial",
                 download: "Download",
                 support: "Telegram Support",
-                windows: "Windows - Download v2rayN",
+                windows: "v2rayN",
                 android: "Android - Download v2rayNG",
-                apple: "iOS - Download Streisand"
+                androidNeko: "Android - Download NekoBox",
+                appleFox: "iOS - Downaload FoXray",
+                androidSing: "Android - Download SingBox",
+                appleV2box: "iOS - Download v2Box",
+                apple: "iOS - Download Streisand",
+                addto: "One Click Install",
+                addv2: "v2rayNG",
+                addsti: "Streisand",
+                addfox: "FoXray",
+                addneko: "NekoBox",
+                addSing: "SingBox",
+                addv2box: "v2Box",
+                addshdw: "Shadow",
+                addcla: "Clash",
+                addclax: "Clash X",
+                sup: "Support",
+                install: "Click on the download link to download the program for your operating system!",
+                oneClick: "To use Config, just click on the program you are using!",
+                restofusage: "Data Usage"
             },
             fa: {
                 active: "فعال",
@@ -2009,7 +2782,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 remainingDays: "روزهای باقی‌مانده: ",
                 remainingDaysSufix: " روز",
                 links: "لینک‌ها",
-                apps: "برنامه‌ها",
+                apps: "دانلود برنامه‌ها",
                 tutorials: "آموزش‌ها",
                 subscription: "لینک اشتراک",
                 language: "زبان",
@@ -2020,14 +2793,27 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 tutorial: "آموزش",
                 download: "دانلود",
                 support: "پشتیبانی تلگرام",
-                windows: "ویندوز - دانلود برنامه v2rayN",
+                windows: "v2rayN",
                 android: "اندروید - دانلود برنامه v2rayNG",
+                androidNeko: "اندروید - دانلود برنامه NekoBox",
+                androidSing: "اندروید - دانلود برنامه SingBox",
                 apple: "آی او اِس - دانلود برنامه Streisand",
-                addto: "نصب",
-                addv2: "اندروید - اضافه کردن به v2rayNG",
-                addsti: "آی او اِس - اضافه کردن به Streisand",
+                appleFox: "آی او اِس - دانلود برنامه FoXray",
+                appleV2box: "آی او اِس - دانلود برنامه v2Box",
+                addto: "نصب با یک کلیک",
+                addv2: "v2rayNG",
+                addsti: "Streisand",
+                addfox: "FoXray",
+                addneko: "NekoBox",
+                addv2box: "v2Box",
+                addshdw: "Shadow",
+                addSing: "SingBox",
+                addcla: "Clash",
+                addclax: "Clash X",
+                install: "برای دانلود برنامه مورد نظر نسبت به سیستم عامل خودتون روی لینک دانلود کلیک کنید!",
                 sup: "پشتیبانی",
-                dataPerc: dataUsage
+                oneClick: "برای استفاده از کانفیگ‌ها کافیه روی برنامه‌ای که استفاده می‌کنید کلیک کنید!",
+                restofusage: "میزان استفاده"
             }
         };
         let settings = {
@@ -2044,7 +2830,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             localStorage.setItem("dark", settings.darkMode);
         });
 
-        document.addEventListener("alpine-i18n:ready", () => {
+        function checkLang() {
             window.AlpineI18n.fallbackLocale = "fa";
             let locale = localStorage.getItem("lang") ?? settings.language;
             window.AlpineI18n.create(locale, langJson);
@@ -2052,11 +2838,77 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             document.body.setAttribute("dir", locale == "fa" ? "rtl" : "ltr");
             if (locale == "fa") $(document.body).addClass("font-[Vazirmatn]");
             else $(document.body).removeClass("font-[Vazirmatn]");
+        }
+
+        document.addEventListener("alpine-i18n:ready", () => {
+            checkLang()
         });
 
+        // Function to set the selected language in local storage
+
+
         document.addEventListener('DOMContentLoaded', () => {
+            setHrefs()
+
+            const countriesSelect = document.getElementById("countries");
+            function setLanguage() {
+                var selectedLanguage = countriesSelect.value;
+                localStorage.setItem("lang", selectedLanguage);
+                checkLang()
+            }
+
+            // Function to load the selected language from local storage
+            function loadLanguage() {
+                var selectedLanguage = localStorage.getItem("lang");
+                if (selectedLanguage) {
+                    countriesSelect.value = selectedLanguage;
+                }
+            }
+
+
+            // Attach event listener to the select box to update local storage when changed
+            countriesSelect.addEventListener("change", setLanguage);
+
+            // Load the selected language on page load
+            window.addEventListener("load", loadLanguage);
+
+            // Trigger the "change" event on page load to apply the saved language
+            var event = new Event("change");
+            countriesSelect.dispatchEvent(event);
+
             const progressBar = document.getElementById('progress__bar')
-            progressBar.style.width = `${dataUsage}%`
+            progressBar.style.width = `${dataUsage}%`;
+
+
+            const copyButton = document.getElementById("copyBtn");
+            copyButton.addEventListener("click", function () {
+                // Text to copy
+                const subLink = "{{ user.subscription_url }}"
+                let subUrl = `${window.location.origin}{{ user.subscription_url }}`;
+                if (sub.includes("http")) {
+                    subUrl = sub;
+                }
+
+                // Create a temporary textarea element to hold the text
+                var textArea = document.createElement("textarea");
+                textArea.value = subUrl;
+
+                // Append the textarea element to the document
+                document.body.appendChild(textArea);
+
+                // Select the text inside the textarea
+                textArea.select();
+
+                // Copy the selected text to the clipboard
+                document.execCommand("copy");
+
+                // Remove the temporary textarea element
+                document.body.removeChild(textArea);
+
+                // Provide feedback to the user
+                alert("Text copied to clipboard: " + textToCopy);
+            });
+
         })
     </script>
 
@@ -2095,9 +2947,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                             <div class="relative">
                                 <div class="flex mb-2 items-center justify-between">
                                     <div>
-                                        <span
+                                        <span x-text="$t('restofusage')"
                                             class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-amber-600 bg-amber-200">
-                                            میزان استفاده
+
                                         </span>
                                     </div>
                                     <div class="text-xs px-2 py-1 text-amber-600 bg-amber-200 rounded-full">
@@ -2109,7 +2961,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                     </div>
                                 </div>
                                 <div :class="getBorderColor(calculatePercentage(dataUsed, dataLimit))"
-                                    class="overflow-hidden h-3 mb-4 text-xs flex rounded border">
+                                    class="overflow-hidden h-4 mb-4 text-xs flex rounded-full border-[3px] outline-1">
                                     <div id="progress__bar"
                                         :class="getChartColor(calculatePercentage(dataUsed, dataLimit))"
                                         class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center">
@@ -2134,70 +2986,167 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                     </div>
                 </div>
                 <div class="flex flex-col gap-y-4 mb-8">
-                    <h2 class="font-bold text-white text-2xl mb-2" x-text="$t('addto')"></h2>
-                    <a href="v2rayng://install-config/?url={{user.subscription_url}}"
-                        class="py-3 px-4 inline-flex transition-all gap-x-2 duration-200 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" version="1.0" class="w-6 h-6"
-                            viewBox="0 0 170.000000 170.000000" preserveAspectRatio="xMidYMid meet">
+                    <h2 class="font-black text-white text-2xl sm:text-3xl" x-text="$t('addto')"></h2>
+                    <div class="bg-gray-700 px-4 py-2 my-4 rounded-xl shadow-gray-700/50 shadow-lg">
+                        <p x-text="$t('oneClick')" class="text-white font-bold text-sm"></p>
+                    </div>
 
-                            <g transform="translate(0.000000,170.000000) scale(0.100000,-0.100000)" fill="#FFF"
-                                stroke="none">
-                                <path
-                                    d="M230 1385 l0 -75 75 0 75 0 2 -549 3 -549 580 616 c319 338 582 619 583 624 2 4 -86 8 -195 8 l-198 0 -275 -257 -275 -256 -5 254 -5 254 -182 3 -183 2 0 -75z" />
-                            </g>
-                        </svg>
+                    <div class="grid w-full grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-4 mb-6">
+                        <a id="android-v2rayng" href=""
+                            class="py-3 px-4 inline-flex transition-all gap-x-2 duration-200 justify-center  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.0" class="w-6 h-6"
+                                viewBox="0 0 170.000000 170.000000" preserveAspectRatio="xMidYMid meet">
 
-                        <span class="sm:text-lg" x-text="$t('addv2')"></span>
-                    </a>
-                    <a href="streisand://import/{{user.subscription_url}}"
-                        class="py-3 px-4 inline-flex transition-all gap-x-2 duration-200 text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 font-medium rounded-lg">
-                        <svg class="w-6 h-6" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M8.987 4.5C8.987 1.5 10.487 0 13.487 0C13.487 3 11.987 4.5 8.987 4.5ZM7.66 6.133C7.018 5.838 6.282 5.5 5.323 5.5C3.194 5.5 0 7.629 0 11.887C0 16.145 2.7 22 5.323 22C6.121 22 6.653 21.734 7.186 21.468C7.718 21.202 8.25 20.936 9.049 20.936C9.847 20.936 10.512 21.202 11.178 21.468C11.843 21.734 12.508 22 13.307 22C15.142 22 17.014 19.136 17.973 15.956C17.091 15.636 15.327 13.985 15.327 11.887C15.327 9.181 16.564 7.964 17.182 7.557C16.067 6.186 14.515 5.5 13.307 5.5C12.347 5.5 11.443 5.838 10.653 6.133C10.04 6.361 9.496 6.565 9.049 6.565C8.601 6.565 8.159 6.361 7.66 6.133Z"
-                                fill="white" />
-                        </svg>
+                                <g transform="translate(0.000000,170.000000) scale(0.100000,-0.100000)" fill="#FFF"
+                                    stroke="none">
+                                    <path
+                                        d="M230 1385 l0 -75 75 0 75 0 2 -549 3 -549 580 616 c319 338 582 619 583 624 2 4 -86 8 -195 8 l-198 0 -275 -257 -275 -256 -5 254 -5 254 -182 3 -183 2 0 -75z" />
+                                </g>
+                            </svg>
 
-                        <span class="sm:text-lg" x-text="$t('addsti')"></span>
-                    </a>
+                            <span class="sm:text-lg" x-text="$t('addv2')"></span>
+                        </a>
+                        <a id="android-nekobox" href=""
+                            class="py-3 px-4 inline-flex transition-all gap-x-2  duration-200 justify-center text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg">
+                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M9.17 1.165C9.07551 0.997296 8.92015 0.872344 8.73609 0.816007C8.55202 0.75967 8.35334 0.776261 8.18117 0.862346C8.009 0.948432 7.87652 1.09742 7.81115 1.27847C7.74578 1.45953 7.75253 1.65878 7.83 1.835L8.667 3.51C8.00017 3.9556 7.42938 4.53028 6.98832 5.20012C6.54726 5.86996 6.24487 6.62137 6.099 7.41L5.99 8H18.01L17.901 7.41C17.7551 6.62137 17.4527 5.86996 17.0117 5.20012C16.5706 4.53028 15.9998 3.9556 15.333 3.51L16.171 1.835C16.258 1.65726 16.2713 1.45232 16.2078 1.26486C16.1444 1.07739 16.0095 0.922596 15.8324 0.834197C15.6553 0.745798 15.4505 0.730964 15.2626 0.792928C15.0746 0.854892 14.9188 0.988631 14.829 1.165L13.992 2.839C13.352 2.61401 12.6784 2.49938 12 2.5C11.3216 2.49938 10.648 2.61401 10.008 2.839L9.17 1.165ZM3.5 9C3.10218 9 2.72064 9.15804 2.43934 9.43934C2.15804 9.72064 2 10.1022 2 10.5V15.5C2 15.8978 2.15804 16.2794 2.43934 16.5607C2.72064 16.842 3.10218 17 3.5 17C3.89782 17 4.27936 16.842 4.56066 16.5607C4.84196 16.2794 5 15.8978 5 15.5V10.5C5 10.1022 4.84196 9.72064 4.56066 9.43934C4.27936 9.15804 3.89782 9 3.5 9ZM20.5 9C20.1022 9 19.7206 9.15804 19.4393 9.43934C19.158 9.72064 19 10.1022 19 10.5V15.5C19 15.8978 19.158 16.2794 19.4393 16.5607C19.7206 16.842 20.1022 17 20.5 17C20.8978 17 21.2794 16.842 21.5607 16.5607C21.842 16.2794 22 15.8978 22 15.5V10.5C22 10.1022 21.842 9.72064 21.5607 9.43934C21.2794 9.15804 20.8978 9 20.5 9ZM18 9H6V17.5C6 17.8978 6.15804 18.2794 6.43934 18.5607C6.72064 18.842 7.10218 19 7.5 19H8V21.5C8 21.8978 8.15804 22.2794 8.43934 22.5607C8.72064 22.842 9.10218 23 9.5 23C9.89782 23 10.2794 22.842 10.5607 22.5607C10.842 22.2794 11 21.8978 11 21.5V19H13V21.5C13 21.8978 13.158 22.2794 13.4393 22.5607C13.7206 22.842 14.1022 23 14.5 23C14.8978 23 15.2794 22.842 15.5607 22.5607C15.842 22.2794 16 21.8978 16 21.5V19H16.5C16.8978 19 17.2794 18.842 17.5607 18.5607C17.842 18.2794 18 17.8978 18 17.5V9Z"
+                                    fill="white" />
+                            </svg>
+
+                            <span class="sm:text-lg" x-text="$t('addneko')"></span>
+                        </a>
+                        <a id="multi-singbox" href=""
+                            class="py-3 px-4 inline-flex transition-all gap-x-2 duration-200 justify-center text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg">
+                            <span class="sm:text-lg" x-text="$t('addSing')"></span>
+                        </a>
+                        <a id="ios-streisand" href=""
+                            class="py-3 px-4 inline-flex transition-all gap-x-2 justify-center duration-200 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg">
+                            <svg class="w-6 h-6" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8.987 4.5C8.987 1.5 10.487 0 13.487 0C13.487 3 11.987 4.5 8.987 4.5ZM7.66 6.133C7.018 5.838 6.282 5.5 5.323 5.5C3.194 5.5 0 7.629 0 11.887C0 16.145 2.7 22 5.323 22C6.121 22 6.653 21.734 7.186 21.468C7.718 21.202 8.25 20.936 9.049 20.936C9.847 20.936 10.512 21.202 11.178 21.468C11.843 21.734 12.508 22 13.307 22C15.142 22 17.014 19.136 17.973 15.956C17.091 15.636 15.327 13.985 15.327 11.887C15.327 9.181 16.564 7.964 17.182 7.557C16.067 6.186 14.515 5.5 13.307 5.5C12.347 5.5 11.443 5.838 10.653 6.133C10.04 6.361 9.496 6.565 9.049 6.565C8.601 6.565 8.159 6.361 7.66 6.133Z"
+                                    fill="white" />
+                            </svg>
+
+                            <span class="sm:text-lg" x-text="$t('addsti')"></span>
+                        </a>
+                        <a id="ios-v2box" href=""
+                            class="py-3 px-4 inline-flex transition-all gap-x-2 duration-200 justify-center text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg">
+                            <svg class="w-6 h-6" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8.987 4.5C8.987 1.5 10.487 0 13.487 0C13.487 3 11.987 4.5 8.987 4.5ZM7.66 6.133C7.018 5.838 6.282 5.5 5.323 5.5C3.194 5.5 0 7.629 0 11.887C0 16.145 2.7 22 5.323 22C6.121 22 6.653 21.734 7.186 21.468C7.718 21.202 8.25 20.936 9.049 20.936C9.847 20.936 10.512 21.202 11.178 21.468C11.843 21.734 12.508 22 13.307 22C15.142 22 17.014 19.136 17.973 15.956C17.091 15.636 15.327 13.985 15.327 11.887C15.327 9.181 16.564 7.964 17.182 7.557C16.067 6.186 14.515 5.5 13.307 5.5C12.347 5.5 11.443 5.838 10.653 6.133C10.04 6.361 9.496 6.565 9.049 6.565C8.601 6.565 8.159 6.361 7.66 6.133Z"
+                                    fill="white" />
+                            </svg>
+
+                            <span class="sm:text-lg" x-text="$t('addv2box')"></span>
+                        </a>
+                        <a id="ios-shadowrocket" href=""
+                            class="py-3 px-4 inline-flex transition-all gap-x-2 duration-200 justify-center text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg">
+                            <svg class="w-6 h-6" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8.987 4.5C8.987 1.5 10.487 0 13.487 0C13.487 3 11.987 4.5 8.987 4.5ZM7.66 6.133C7.018 5.838 6.282 5.5 5.323 5.5C3.194 5.5 0 7.629 0 11.887C0 16.145 2.7 22 5.323 22C6.121 22 6.653 21.734 7.186 21.468C7.718 21.202 8.25 20.936 9.049 20.936C9.847 20.936 10.512 21.202 11.178 21.468C11.843 21.734 12.508 22 13.307 22C15.142 22 17.014 19.136 17.973 15.956C17.091 15.636 15.327 13.985 15.327 11.887C15.327 9.181 16.564 7.964 17.182 7.557C16.067 6.186 14.515 5.5 13.307 5.5C12.347 5.5 11.443 5.838 10.653 6.133C10.04 6.361 9.496 6.565 9.049 6.565C8.601 6.565 8.159 6.361 7.66 6.133Z"
+                                    fill="white" />
+                            </svg>
+
+                            <span class="sm:text-lg" x-text="$t('addshdw')"></span>
+                        </a>
+                    </div>
                 </div>
                 <div class="flex flex-col gap-y-4 mb-8">
-                    <h2 class="font-bold text-white text-2xl mb-2" x-text="$t('apps')"></h2>
-                    <a href="https://github.com/2dust/v2rayN/releases/download/6.27/zz_v2rayN-With-Core-SelfContained.7z"
-                        class="text-white transition-all duration-200 bg-gradient-to-r inline-flex gap-x-3 items-center from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg py-3 px-4">
-                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M22.25 12.75V23.424L10.75 21.004V12.75H22.25ZM22.25 11.25V0.576L10.75 2.996V11.25H22.25ZM9.25 3.313L1.75 4.89V11.249H9.25V3.313ZM1.75 12.75H9.25V20.688L1.75 19.108V12.75Z"
-                                fill="white" />
-                        </svg>
-
-                        <span class="sm:text-lg" x-text="$t('windows')"></span>
-                    </a>
-                    <a href="https://github.com/2dust/v2rayNG/releases/download/1.8.5/v2rayNG_1.8.5.apk"
-                        class="py-3 px-4 transition-all duration-200 inline-flex gap-x-3 text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg">
-                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M9.17 1.165C9.07551 0.997296 8.92015 0.872344 8.73609 0.816007C8.55202 0.75967 8.35334 0.776261 8.18117 0.862346C8.009 0.948432 7.87652 1.09742 7.81115 1.27847C7.74578 1.45953 7.75253 1.65878 7.83 1.835L8.667 3.51C8.00017 3.9556 7.42938 4.53028 6.98832 5.20012C6.54726 5.86996 6.24487 6.62137 6.099 7.41L5.99 8H18.01L17.901 7.41C17.7551 6.62137 17.4527 5.86996 17.0117 5.20012C16.5706 4.53028 15.9998 3.9556 15.333 3.51L16.171 1.835C16.258 1.65726 16.2713 1.45232 16.2078 1.26486C16.1444 1.07739 16.0095 0.922596 15.8324 0.834197C15.6553 0.745798 15.4505 0.730964 15.2626 0.792928C15.0746 0.854892 14.9188 0.988631 14.829 1.165L13.992 2.839C13.352 2.61401 12.6784 2.49938 12 2.5C11.3216 2.49938 10.648 2.61401 10.008 2.839L9.17 1.165ZM3.5 9C3.10218 9 2.72064 9.15804 2.43934 9.43934C2.15804 9.72064 2 10.1022 2 10.5V15.5C2 15.8978 2.15804 16.2794 2.43934 16.5607C2.72064 16.842 3.10218 17 3.5 17C3.89782 17 4.27936 16.842 4.56066 16.5607C4.84196 16.2794 5 15.8978 5 15.5V10.5C5 10.1022 4.84196 9.72064 4.56066 9.43934C4.27936 9.15804 3.89782 9 3.5 9ZM20.5 9C20.1022 9 19.7206 9.15804 19.4393 9.43934C19.158 9.72064 19 10.1022 19 10.5V15.5C19 15.8978 19.158 16.2794 19.4393 16.5607C19.7206 16.842 20.1022 17 20.5 17C20.8978 17 21.2794 16.842 21.5607 16.5607C21.842 16.2794 22 15.8978 22 15.5V10.5C22 10.1022 21.842 9.72064 21.5607 9.43934C21.2794 9.15804 20.8978 9 20.5 9ZM18 9H6V17.5C6 17.8978 6.15804 18.2794 6.43934 18.5607C6.72064 18.842 7.10218 19 7.5 19H8V21.5C8 21.8978 8.15804 22.2794 8.43934 22.5607C8.72064 22.842 9.10218 23 9.5 23C9.89782 23 10.2794 22.842 10.5607 22.5607C10.842 22.2794 11 21.8978 11 21.5V19H13V21.5C13 21.8978 13.158 22.2794 13.4393 22.5607C13.7206 22.842 14.1022 23 14.5 23C14.8978 23 15.2794 22.842 15.5607 22.5607C15.842 22.2794 16 21.8978 16 21.5V19H16.5C16.8978 19 17.2794 18.842 17.5607 18.5607C17.842 18.2794 18 17.8978 18 17.5V9Z"
-                                fill="white" />
-                        </svg>
+                    <h2 class="font-black text-white text-2xl sm:text-3xl mb-2" x-text="$t('apps')"></h2>
+                    <div class="bg-gray-700 px-4 py-2 my-4 rounded-xl shadow-gray-700/50 shadow-lg">
+                        <p x-text="$t('install')" class="text-white font-bold text-sm"></p>
+                    </div>
+                    <div class="grid w-full grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-4 mb-6">
+                        <a href="https://github.com/2dust/v2rayNG/releases/download/1.8.5/v2rayNG_1.8.5.apk"
+                            class="py-3 px-4 transition-all duration-200 inline-flex gap-x-3 justify-center text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg">
+                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M9.17 1.165C9.07551 0.997296 8.92015 0.872344 8.73609 0.816007C8.55202 0.75967 8.35334 0.776261 8.18117 0.862346C8.009 0.948432 7.87652 1.09742 7.81115 1.27847C7.74578 1.45953 7.75253 1.65878 7.83 1.835L8.667 3.51C8.00017 3.9556 7.42938 4.53028 6.98832 5.20012C6.54726 5.86996 6.24487 6.62137 6.099 7.41L5.99 8H18.01L17.901 7.41C17.7551 6.62137 17.4527 5.86996 17.0117 5.20012C16.5706 4.53028 15.9998 3.9556 15.333 3.51L16.171 1.835C16.258 1.65726 16.2713 1.45232 16.2078 1.26486C16.1444 1.07739 16.0095 0.922596 15.8324 0.834197C15.6553 0.745798 15.4505 0.730964 15.2626 0.792928C15.0746 0.854892 14.9188 0.988631 14.829 1.165L13.992 2.839C13.352 2.61401 12.6784 2.49938 12 2.5C11.3216 2.49938 10.648 2.61401 10.008 2.839L9.17 1.165ZM3.5 9C3.10218 9 2.72064 9.15804 2.43934 9.43934C2.15804 9.72064 2 10.1022 2 10.5V15.5C2 15.8978 2.15804 16.2794 2.43934 16.5607C2.72064 16.842 3.10218 17 3.5 17C3.89782 17 4.27936 16.842 4.56066 16.5607C4.84196 16.2794 5 15.8978 5 15.5V10.5C5 10.1022 4.84196 9.72064 4.56066 9.43934C4.27936 9.15804 3.89782 9 3.5 9ZM20.5 9C20.1022 9 19.7206 9.15804 19.4393 9.43934C19.158 9.72064 19 10.1022 19 10.5V15.5C19 15.8978 19.158 16.2794 19.4393 16.5607C19.7206 16.842 20.1022 17 20.5 17C20.8978 17 21.2794 16.842 21.5607 16.5607C21.842 16.2794 22 15.8978 22 15.5V10.5C22 10.1022 21.842 9.72064 21.5607 9.43934C21.2794 9.15804 20.8978 9 20.5 9ZM18 9H6V17.5C6 17.8978 6.15804 18.2794 6.43934 18.5607C6.72064 18.842 7.10218 19 7.5 19H8V21.5C8 21.8978 8.15804 22.2794 8.43934 22.5607C8.72064 22.842 9.10218 23 9.5 23C9.89782 23 10.2794 22.842 10.5607 22.5607C10.842 22.2794 11 21.8978 11 21.5V19H13V21.5C13 21.8978 13.158 22.2794 13.4393 22.5607C13.7206 22.842 14.1022 23 14.5 23C14.8978 23 15.2794 22.842 15.5607 22.5607C15.842 22.2794 16 21.8978 16 21.5V19H16.5C16.8978 19 17.2794 18.842 17.5607 18.5607C17.842 18.2794 18 17.8978 18 17.5V9Z"
+                                    fill="white" />
+                            </svg>
 
 
-                        <span class="sm:text-lg" x-text="$t('android')"></span>
-                    </a>
-                    <a href="https://apps.apple.com/us/app/streisand/id6450534064"
-                        class="py-3 px-4 transition-all duration-200 inline-flex gap-x-3 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg">
-                        <svg class="w-6 h-6" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M8.987 4.5C8.987 1.5 10.487 0 13.487 0C13.487 3 11.987 4.5 8.987 4.5ZM7.66 6.133C7.018 5.838 6.282 5.5 5.323 5.5C3.194 5.5 0 7.629 0 11.887C0 16.145 2.7 22 5.323 22C6.121 22 6.653 21.734 7.186 21.468C7.718 21.202 8.25 20.936 9.049 20.936C9.847 20.936 10.512 21.202 11.178 21.468C11.843 21.734 12.508 22 13.307 22C15.142 22 17.014 19.136 17.973 15.956C17.091 15.636 15.327 13.985 15.327 11.887C15.327 9.181 16.564 7.964 17.182 7.557C16.067 6.186 14.515 5.5 13.307 5.5C12.347 5.5 11.443 5.838 10.653 6.133C10.04 6.361 9.496 6.565 9.049 6.565C8.601 6.565 8.159 6.361 7.66 6.133Z"
-                                fill="white" />
-                        </svg>
+                            <span class="sm:text-lg" x-text="$t('addv2')"></span>
+                        </a>
+                        <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.2.3/NB4A-1.2.3-arm64-v8a.apk"
+                            class="py-3 px-4 transition-all duration-200 inline-flex gap-x-3 justify-center text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg">
+                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M9.17 1.165C9.07551 0.997296 8.92015 0.872344 8.73609 0.816007C8.55202 0.75967 8.35334 0.776261 8.18117 0.862346C8.009 0.948432 7.87652 1.09742 7.81115 1.27847C7.74578 1.45953 7.75253 1.65878 7.83 1.835L8.667 3.51C8.00017 3.9556 7.42938 4.53028 6.98832 5.20012C6.54726 5.86996 6.24487 6.62137 6.099 7.41L5.99 8H18.01L17.901 7.41C17.7551 6.62137 17.4527 5.86996 17.0117 5.20012C16.5706 4.53028 15.9998 3.9556 15.333 3.51L16.171 1.835C16.258 1.65726 16.2713 1.45232 16.2078 1.26486C16.1444 1.07739 16.0095 0.922596 15.8324 0.834197C15.6553 0.745798 15.4505 0.730964 15.2626 0.792928C15.0746 0.854892 14.9188 0.988631 14.829 1.165L13.992 2.839C13.352 2.61401 12.6784 2.49938 12 2.5C11.3216 2.49938 10.648 2.61401 10.008 2.839L9.17 1.165ZM3.5 9C3.10218 9 2.72064 9.15804 2.43934 9.43934C2.15804 9.72064 2 10.1022 2 10.5V15.5C2 15.8978 2.15804 16.2794 2.43934 16.5607C2.72064 16.842 3.10218 17 3.5 17C3.89782 17 4.27936 16.842 4.56066 16.5607C4.84196 16.2794 5 15.8978 5 15.5V10.5C5 10.1022 4.84196 9.72064 4.56066 9.43934C4.27936 9.15804 3.89782 9 3.5 9ZM20.5 9C20.1022 9 19.7206 9.15804 19.4393 9.43934C19.158 9.72064 19 10.1022 19 10.5V15.5C19 15.8978 19.158 16.2794 19.4393 16.5607C19.7206 16.842 20.1022 17 20.5 17C20.8978 17 21.2794 16.842 21.5607 16.5607C21.842 16.2794 22 15.8978 22 15.5V10.5C22 10.1022 21.842 9.72064 21.5607 9.43934C21.2794 9.15804 20.8978 9 20.5 9ZM18 9H6V17.5C6 17.8978 6.15804 18.2794 6.43934 18.5607C6.72064 18.842 7.10218 19 7.5 19H8V21.5C8 21.8978 8.15804 22.2794 8.43934 22.5607C8.72064 22.842 9.10218 23 9.5 23C9.89782 23 10.2794 22.842 10.5607 22.5607C10.842 22.2794 11 21.8978 11 21.5V19H13V21.5C13 21.8978 13.158 22.2794 13.4393 22.5607C13.7206 22.842 14.1022 23 14.5 23C14.8978 23 15.2794 22.842 15.5607 22.5607C15.842 22.2794 16 21.8978 16 21.5V19H16.5C16.8978 19 17.2794 18.842 17.5607 18.5607C17.842 18.2794 18 17.8978 18 17.5V9Z"
+                                    fill="white" />
+                            </svg>
 
-                        <span class="sm:text-lg" x-text="$t('apple')"></span>
-                    </a>
+
+                            <span class="sm:text-lg" x-text="$t('addneko')"></span>
+                        </a>
+                        <a href="https://github.com/SagerNet/sing-box/releases/download/v1.5.0-beta.6/SFA-1.5.0-beta.6-universal.apk"
+                            class="py-3 px-4 transition-all duration-200 inline-flex gap-x-3 justify-center text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg">
+                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M9.17 1.165C9.07551 0.997296 8.92015 0.872344 8.73609 0.816007C8.55202 0.75967 8.35334 0.776261 8.18117 0.862346C8.009 0.948432 7.87652 1.09742 7.81115 1.27847C7.74578 1.45953 7.75253 1.65878 7.83 1.835L8.667 3.51C8.00017 3.9556 7.42938 4.53028 6.98832 5.20012C6.54726 5.86996 6.24487 6.62137 6.099 7.41L5.99 8H18.01L17.901 7.41C17.7551 6.62137 17.4527 5.86996 17.0117 5.20012C16.5706 4.53028 15.9998 3.9556 15.333 3.51L16.171 1.835C16.258 1.65726 16.2713 1.45232 16.2078 1.26486C16.1444 1.07739 16.0095 0.922596 15.8324 0.834197C15.6553 0.745798 15.4505 0.730964 15.2626 0.792928C15.0746 0.854892 14.9188 0.988631 14.829 1.165L13.992 2.839C13.352 2.61401 12.6784 2.49938 12 2.5C11.3216 2.49938 10.648 2.61401 10.008 2.839L9.17 1.165ZM3.5 9C3.10218 9 2.72064 9.15804 2.43934 9.43934C2.15804 9.72064 2 10.1022 2 10.5V15.5C2 15.8978 2.15804 16.2794 2.43934 16.5607C2.72064 16.842 3.10218 17 3.5 17C3.89782 17 4.27936 16.842 4.56066 16.5607C4.84196 16.2794 5 15.8978 5 15.5V10.5C5 10.1022 4.84196 9.72064 4.56066 9.43934C4.27936 9.15804 3.89782 9 3.5 9ZM20.5 9C20.1022 9 19.7206 9.15804 19.4393 9.43934C19.158 9.72064 19 10.1022 19 10.5V15.5C19 15.8978 19.158 16.2794 19.4393 16.5607C19.7206 16.842 20.1022 17 20.5 17C20.8978 17 21.2794 16.842 21.5607 16.5607C21.842 16.2794 22 15.8978 22 15.5V10.5C22 10.1022 21.842 9.72064 21.5607 9.43934C21.2794 9.15804 20.8978 9 20.5 9ZM18 9H6V17.5C6 17.8978 6.15804 18.2794 6.43934 18.5607C6.72064 18.842 7.10218 19 7.5 19H8V21.5C8 21.8978 8.15804 22.2794 8.43934 22.5607C8.72064 22.842 9.10218 23 9.5 23C9.89782 23 10.2794 22.842 10.5607 22.5607C10.842 22.2794 11 21.8978 11 21.5V19H13V21.5C13 21.8978 13.158 22.2794 13.4393 22.5607C13.7206 22.842 14.1022 23 14.5 23C14.8978 23 15.2794 22.842 15.5607 22.5607C15.842 22.2794 16 21.8978 16 21.5V19H16.5C16.8978 19 17.2794 18.842 17.5607 18.5607C17.842 18.2794 18 17.8978 18 17.5V9Z"
+                                    fill="white" />
+                            </svg>
+
+
+                            <span class="sm:text-lg" x-text="$t('addSing')"></span>
+                        </a>
+                        <a href="https://apps.apple.com/us/app/streisand/id6450534064"
+                            class="py-3 px-4 transition-all duration-200 inline-flex gap-x-3 justify-center text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg">
+                            <svg class="w-6 h-6" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8.987 4.5C8.987 1.5 10.487 0 13.487 0C13.487 3 11.987 4.5 8.987 4.5ZM7.66 6.133C7.018 5.838 6.282 5.5 5.323 5.5C3.194 5.5 0 7.629 0 11.887C0 16.145 2.7 22 5.323 22C6.121 22 6.653 21.734 7.186 21.468C7.718 21.202 8.25 20.936 9.049 20.936C9.847 20.936 10.512 21.202 11.178 21.468C11.843 21.734 12.508 22 13.307 22C15.142 22 17.014 19.136 17.973 15.956C17.091 15.636 15.327 13.985 15.327 11.887C15.327 9.181 16.564 7.964 17.182 7.557C16.067 6.186 14.515 5.5 13.307 5.5C12.347 5.5 11.443 5.838 10.653 6.133C10.04 6.361 9.496 6.565 9.049 6.565C8.601 6.565 8.159 6.361 7.66 6.133Z"
+                                    fill="white" />
+                            </svg>
+
+                            <span class="sm:text-lg" x-text="$t('addsti')"></span>
+                        </a>
+                        <a href="https://apps.apple.com/us/app/foxray/id6448898396"
+                            class="py-3 px-4 transition-all duration-200 inline-flex gap-x-3 justify-center text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg">
+                            <svg class="w-6 h-6" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8.987 4.5C8.987 1.5 10.487 0 13.487 0C13.487 3 11.987 4.5 8.987 4.5ZM7.66 6.133C7.018 5.838 6.282 5.5 5.323 5.5C3.194 5.5 0 7.629 0 11.887C0 16.145 2.7 22 5.323 22C6.121 22 6.653 21.734 7.186 21.468C7.718 21.202 8.25 20.936 9.049 20.936C9.847 20.936 10.512 21.202 11.178 21.468C11.843 21.734 12.508 22 13.307 22C15.142 22 17.014 19.136 17.973 15.956C17.091 15.636 15.327 13.985 15.327 11.887C15.327 9.181 16.564 7.964 17.182 7.557C16.067 6.186 14.515 5.5 13.307 5.5C12.347 5.5 11.443 5.838 10.653 6.133C10.04 6.361 9.496 6.565 9.049 6.565C8.601 6.565 8.159 6.361 7.66 6.133Z"
+                                    fill="white" />
+                            </svg>
+
+                            <span class="sm:text-lg" x-text="$t('addfox')"></span>
+                        </a>
+                        <a href="https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690"
+                            class="py-3 px-4 transition-all duration-200 inline-flex gap-x-3 justify-center text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg">
+                            <svg class="w-6 h-6" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8.987 4.5C8.987 1.5 10.487 0 13.487 0C13.487 3 11.987 4.5 8.987 4.5ZM7.66 6.133C7.018 5.838 6.282 5.5 5.323 5.5C3.194 5.5 0 7.629 0 11.887C0 16.145 2.7 22 5.323 22C6.121 22 6.653 21.734 7.186 21.468C7.718 21.202 8.25 20.936 9.049 20.936C9.847 20.936 10.512 21.202 11.178 21.468C11.843 21.734 12.508 22 13.307 22C15.142 22 17.014 19.136 17.973 15.956C17.091 15.636 15.327 13.985 15.327 11.887C15.327 9.181 16.564 7.964 17.182 7.557C16.067 6.186 14.515 5.5 13.307 5.5C12.347 5.5 11.443 5.838 10.653 6.133C10.04 6.361 9.496 6.565 9.049 6.565C8.601 6.565 8.159 6.361 7.66 6.133Z"
+                                    fill="white" />
+                            </svg>
+
+                            <span class="sm:text-lg" x-text="$t('addv2box')"></span>
+                        </a>
+                        <a href="https://apps.apple.com/us/app/sing-box/id6451272673"
+                            class="py-3 px-4 transition-all duration-200 inline-flex gap-x-3 justify-center text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg">
+                            <svg class="w-6 h-6" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8.987 4.5C8.987 1.5 10.487 0 13.487 0C13.487 3 11.987 4.5 8.987 4.5ZM7.66 6.133C7.018 5.838 6.282 5.5 5.323 5.5C3.194 5.5 0 7.629 0 11.887C0 16.145 2.7 22 5.323 22C6.121 22 6.653 21.734 7.186 21.468C7.718 21.202 8.25 20.936 9.049 20.936C9.847 20.936 10.512 21.202 11.178 21.468C11.843 21.734 12.508 22 13.307 22C15.142 22 17.014 19.136 17.973 15.956C17.091 15.636 15.327 13.985 15.327 11.887C15.327 9.181 16.564 7.964 17.182 7.557C16.067 6.186 14.515 5.5 13.307 5.5C12.347 5.5 11.443 5.838 10.653 6.133C10.04 6.361 9.496 6.565 9.049 6.565C8.601 6.565 8.159 6.361 7.66 6.133Z"
+                                    fill="white" />
+                            </svg>
+
+                            <span class="sm:text-lg" x-text="$t('addSing')"></span>
+                        </a>
+                        <a href="https://github.com/2dust/v2rayN/releases/download/6.27/zz_v2rayN-With-Core-SelfContained.7z"
+                            class="text-white transition-all duration-200 bg-gradient-to-r inline-flex gap-x-3 items-center justify-center text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg py-3 px-4">
+                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M22.25 12.75V23.424L10.75 21.004V12.75H22.25ZM22.25 11.25V0.576L10.75 2.996V11.25H22.25ZM9.25 3.313L1.75 4.89V11.249H9.25V3.313ZM1.75 12.75H9.25V20.688L1.75 19.108V12.75Z"
+                                    fill="white" />
+                            </svg>
+
+                            <span class="sm:text-lg" x-text="$t('windows')"></span>
+                        </a>
+                    </div>
                 </div>
                 <div class="flex flex-col gap-y-4">
                     <h2 class="font-bold text-white text-2xl mb-2" x-text="$t('sup')"></h2>
                     <a href="https://t.me/yourID"
-                        class="py-3 px-4 transition-all duration-200 inline-flex gap-x-3 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg">
+                        class="py-3 px-4 transition-all duration-200 inline-flex gap-x-3 justify-center text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="w-6 h-6 fill-white"
                             viewBox="0 0 50 50">
                             <path
@@ -2209,6 +3158,38 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                         <span class="sm:text-lg" x-text="$t('support')"></span>
                     </a>
                 </div>
+            </div>
+            <div class="flex mt-6 items-center justify-center gap-x-4 mb-4">
+                <button id="copyBtn" title="Copy" class="copy">
+                    <span data-text-end="Copied!" data-text-initial="Copy to clipboard" class="tooltip"></span>
+                    <span>
+                        <svg xml:space="preserve" style="enable-background:new 0 0 512 512" viewBox="0 0 6.35 6.35"
+                            y="0" x="0" height="20" width="20" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" class="clipboard">
+                            <g>
+                                <path fill="currentColor"
+                                    d="M2.43.265c-.3 0-.548.236-.573.53h-.328a.74.74 0 0 0-.735.734v3.822a.74.74 0 0 0 .735.734H4.82a.74.74 0 0 0 .735-.734V1.529a.74.74 0 0 0-.735-.735h-.328a.58.58 0 0 0-.573-.53zm0 .529h1.49c.032 0 .049.017.049.049v.431c0 .032-.017.049-.049.049H2.43c-.032 0-.05-.017-.05-.049V.843c0-.032.018-.05.05-.05zm-.901.53h.328c.026.292.274.528.573.528h1.49a.58.58 0 0 0 .573-.529h.328a.2.2 0 0 1 .206.206v3.822a.2.2 0 0 1-.206.205H1.53a.2.2 0 0 1-.206-.205V1.529a.2.2 0 0 1 .206-.206z">
+                                </path>
+                            </g>
+                        </svg>
+                        <svg xml:space="preserve" style="enable-background:new 0 0 512 512" viewBox="0 0 24 24" y="0"
+                            x="0" height="18" width="18" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" class="checkmark">
+                            <g>
+                                <path data-original="#000000" fill="currentColor"
+                                    d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
+                                </path>
+                            </g>
+                        </svg>
+                    </span>
+                </button>
+
+                <select id="countries"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="fa">فارسی</option>
+                    <option value="en">English</option>
+                </select>
+
             </div>
         </div>
     </div>
