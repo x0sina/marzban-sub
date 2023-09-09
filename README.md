@@ -4,16 +4,11 @@
   </a>
 </p>
 
-# This is a edited version of  <a href="https://github.com/MuhammadAshouri/marzban-templates" target="_blank" rel="noopener noreferrer" >MuhammadAshouri/marzban-templates</a> Project. 
+This is a edited version of  <a href="https://github.com/MuhammadAshouri/marzban-templates" target="_blank" rel="noopener noreferrer" >MuhammadAshouri/marzban-templates</a> Project. 
 
 # Usage
 
-Make sure you have set XRAY_SUBSCRIPTION_URL_PREFIX in .env file with this command:
-```
-nano /opt/marzban/.env
-```
-Fill it with your domain name of your Subscription
-
+First you need to copy [html file](https://github.com/x0sina/marzban-sub/blob/main/index.html) to your sever. You can do it by this:
 
 ```bash
 cd /opt/marzban
@@ -47,13 +42,6 @@ marzban restart
 ```
 
 # استفاده
-
-ابتدا مطمئن شوید متغیر محیطی XRAY_SUBSCRIPTION_URL_PREFIX رو مقدار دهی کردید. با این دستور میتونید متوجه بشید:
-```
-nano /opt/marzban/.env
-```
-
-مقدار این متغیر رو دامنه ی ساب لینک خودتون قرار بدید.
 
 ابتدا فایل [html file](https://github.com/x0sina/marzban-sub/blob/main/index.html) رو به سرور بفرستید. با دستور زیر میتونید این کارو بکنید:
 
