@@ -4,6 +4,8 @@
   </a>
 </p>
 
+# This is a edited version of  <a href="https://github.com/MuhammadAshouri/marzban-templates" target="_blank" rel="noopener noreferrer" >MuhammadAshouri/marzban-templates</a> Project. 
+
 # Usage
 
 First you need to copy [html file](https://github.com/x0sina/marzban-sub/blob/main/index.html) to your sever. You can do it by this:
