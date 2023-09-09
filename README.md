@@ -8,6 +8,18 @@
 
 # Usage
 
+Make sure you have set XRAY_SUBSCRIPTION_URL_PREFIX in .env file with this command:
+```nano /opt/marzban/.env
+```
+Fill it with your domain name of your Subscription
+
+
+```bash
+cd /opt/marzban
+apt install wget
+wget https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
+```
+
 First you need to copy [html file](https://github.com/x0sina/marzban-sub/blob/main/index.html) to your sever. You can do it by this:
 
 ```bash
@@ -34,6 +46,12 @@ marzban restart
 ```
 
 # استفاده
+
+ابتدا مطمئن شوید متغیر محیطی XRAY_SUBSCRIPTION_URL_PREFIX رو مقدار دهی کردید. با این دستور میتونید متوجه بشید:
+```nano /opt/marzban/.env
+```
+
+مقدار این متغیر رو دامنه ی ساب لینک خودتون قرار بدید.
 
 ابتدا فایل [html file](https://github.com/x0sina/marzban-sub/blob/main/index.html) رو به سرور بفرستید. با دستور زیر میتونید این کارو بکنید:
 
