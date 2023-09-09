@@ -6,12 +6,12 @@
 
 # Usage
 
-First you need to copy [html file](https://github.com/x0sina/marzban-sub/main/index.html) to your sever. You can do it by this:
+First you need to copy [html file](https://github.com/x0sina/marzban-sub/blob/main/index.html) to your sever. You can do it by this:
 
 ```bash
 cd /opt/marzban
 apt install wget
-wget https://cdn.jsdelivr.net/gh/MuhammadAshouri/marzban-templates@master/template-01/index.html
+wget https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
 ```
 
 Then you have to map it to your docker container. Add this line to volume section of `docker-compose.yml`:
@@ -33,12 +33,12 @@ marzban restart
 
 # استفاده
 
-ابتدا فایل [html file](https://github.com/x0sina/marzban-sub/main/index.html) رو به سرور بفرستید. با دستور زیر میتونید این کارو بکنید:
+ابتدا فایل [html file](https://github.com/x0sina/marzban-sub/blob/main/index.html) رو به سرور بفرستید. با دستور زیر میتونید این کارو بکنید:
 
 ```bash
 cd /opt/marzban
 apt install wget
-wget https://cdn.jsdelivr.net/gh/MuhammadAshouri/marzban-templates@master/template-01/index.html
+wget https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
 ```
 
 حالا باید این فایل به به داکر مپ کنید. خط آخر رو به بخش volumes فایل `docker-compose.yml` اضافه کنید:
