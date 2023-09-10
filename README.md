@@ -9,6 +9,7 @@
 - [ویژگی‌ ها](#ویژگی-ها)
 - [مراحل نصب](#مراحل-نصب)
 - [زبان پیش فرض](#زبان-پیش-فرض)
+- [شخصی سازی](#شخصی-سازی)
 
 # مقدمه
 یک قالب html ساده برای نمایش بهتر اطلاعات کاربر
@@ -54,6 +55,26 @@ marzban restart
 ```
 در این مثال زبان اصلی فارسی است.
 
+# شخصی سازی
+برای شخصی سازی ایدی تلگرام, تصویر پس زمینه و لوگوی کاربر باید تغییراتی در فایل html لحاظ شود که با سرچ کردن برخی مقادیر امکان پذیره.
+برای سرچ کردن با استفاده از nano ابتدا فایل را با nano با دستور زیر باز کنید:
+```
+nano /var/lib/marzban/templates/subscription/index.html
+```
+سپس با دکمه های ترکیبی Ctrl + W سرچ بار رو باز کنید و برای عوض کردن ایدی پشتیبانی تلگرام عبارت زیر رو سرچ کنید:
+```
+https://t.me/yourID
+```
+برای لوگوی کاربر این عبارتو سرچ کنید:
+```
+images/marzban.svg
+```
+برای تصویر پس زمینه این عبارتو سرچ کنید:
+```
+background: url('https://4kwallpapers.com
+```
+پس از اعمال تغییرات فایل رو سیو کنید و مرزبان رو ریستارت کنید.
+
 ## بروزرسانی
 برای بروزرسانی تمپلیت فقط کافیست مرحله 1 را تکرار کنید.
 
@@ -64,6 +85,7 @@ marzban restart
 - [Attributes](#Attributes)
 - [Installation Steps](#Install-Steps)
 - [Default Language](#Default-Language)
+- [Personalization](#Personalization)
 
 # Introduction
 A simple html template to better display user information
@@ -98,6 +120,26 @@ marzban restart
 
 # Default Language
 To change the default language, just refer to the end of the code in the html file and select the desired language in the select tag. Example:
+
+# Personalization
+To personalize the Telegram ID, background image and user logo, changes must be included in the html file, which is possible by searching for some values.
+To search using nano, first open the file with nano with the following command:
+```
+nano /var/lib/marzban/templates/subscription/index.html
+```
+Then open the search bar with Ctrl + W combination buttons and search for the following phrase to change Telegram support ID:
+```
+https://t.me/yourID
+```
+Search for the user's logo:
+```
+images/marzban.svg
+```
+Search for the background image:
+```
+background: url('https://4kwallpapers.com
+```
+After making changes, save the file and restart Marzban.
 
 ```
 <select id="countries" class="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white :focus:ring-blue-500 :focus:border blue-500">
