@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/x0sina/marzban-sub" target="_blank" rel="noopener noreferrer">
-    <img src="https://raw.githubusercontent.com/x0sina/marzban-sub/main/preview.jpg" title="Marzba-Sub"/>
+    <img src="https://raw.githubusercontent.com/x0sina/marzban-sub/main/preview.png" title="Marzba-Sub"/>
   </a>
 </p>
 <h1 align="center"/>قالب سابسکریپشن برای پنل  <a href="https://github.com/Gozargah/Marzban">مرزبان</a></h1>
