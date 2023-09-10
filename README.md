@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/oXIIIo/subscription-template" target="_blank" rel="noopener noreferrer">
+  <a href="https://github.com/x0sina/marzban-sub" target="_blank" rel="noopener noreferrer">
     <img src="https://raw.githubusercontent.com/x0sina/marzban-sub/main/preview.jpg" title="Marzba-Sub"/>
   </a>
 </p>
