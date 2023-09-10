@@ -62,7 +62,7 @@ marzban restart
 
 # Table of Contents
 - [Attributes](#Attributes)
-- [Install Steps](#Install-Steps)
+- [Installation Steps](#Install-Steps)
 - [Default Language](#Default-Language)
 
 # Introduction
