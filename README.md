@@ -48,4 +48,4 @@ marzban restart
 برای بروزرسانی تمپلیت فقط کافیست مرحله 1 را تکرار کنید.
 
 ## کپی رایت
-این قالب بر اساس طرح (Profile Card)[https://github.com/MuhammadAshouri/marzban-templates] ساخته شده.
+این قالب بر اساس طرح <a href="https://github.com/Gozargah/Marzban">Marzban Templates<a> ساخته شده.
