@@ -2571,7 +2571,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
         function setHrefs() {
             document.getElementById("ios-streisand").href = `streisand://import/${fullUrl}`;
             document.getElementById("ios-v2box").href = `v2box://install-sub?url=${fullUrl}&name=Sub`
-            document.getElementById("ios-shadowrocket").href = `sub://${fullUrl}`;
+            document.getElementById("ios-shadowrocket").href = `sub://${encodeURI(fullUrl)}`;
             document.getElementById("android-v2rayng").href = `v2rayng://install-config?url=${fullUrl}`;
             document.getElementById("multi-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#Sub`;
             document.getElementById("android-nekobox").href = `sn://subscription?url=${fullUrl}&name=Sub`;
@@ -2612,6 +2612,13 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             var encodedURL = btoa(currentURL);
             var foXrayURL = 'foxray://yiguo.dev/sub/add/?url=' + encodedURL + '#name';
             window.location.href = foXrayURL;
+        }
+
+        function openShadowRURL() {
+            var currentURL = window.location.href;
+            var encodedURL = btoa(currentURL);
+            var shadowRLink = 'sub://' + encodedURL;
+            window.location.href = shadowRLink;
         }
 
         Alpine.data('dataLimit', '0'); // Initialize Alpine data properties
@@ -3114,7 +3121,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
                             <span class="sm:text-lg" x-text="$t('addv2box')"></span>
                         </a>
-                        <a id="ios-shadowrocket" href=""
+                        <button type="button" onclick="openShadowRURL()" id="ios-shadowrocket"
                             class="py-3 px-4 inline-flex transition-all gap-x-2 duration-200 justify-center text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg">
                             <svg class="w-6 h-6" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -3123,7 +3130,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                             </svg>
 
                             <span class="sm:text-lg" x-text="$t('addshdw')"></span>
-                        </a>
+                        </button>
                     </div>
                 </div>
                 <div class="flex flex-col gap-y-4 mb-8">
