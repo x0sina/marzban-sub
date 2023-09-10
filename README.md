@@ -29,12 +29,12 @@ sudo wget -N -P /var/lib/marzban/templates/subscription/  https://raw.githubuser
 2. دستورات زیر رو تو ترمینال سرورتون بزنید:
 ```sh
 echo 'CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"' | sudo tee -a /opt/marzban/.env
-echo 'CLASH_SUBSCRIPTION_TEMPLATE="subscription/index.html"' | sudo tee -a /opt/marzban/.env
+echo 'SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"' | sudo tee -a /opt/marzban/.env
 ```
-یا مقادیر زیر رو در فایل `.env` در پوشه `/opt/marzban` قرار بدین
+یا مقادیر زیر رو در فایل `.env` در پوشه `/opt/marzban` با پاک کردن # اول آنها از حالت کامنت در بیارید.
 ```sh
 CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"
-CLASH_SUBSCRIPTION_TEMPLATE="subscription/index.html"
+SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
 ```
 
 3. ری استارت مرزبان
@@ -74,7 +74,7 @@ A simple html template to better display user information
 - Three languages (Russian, English, Persian)
 - Sub fantasy page with beautiful color and glaze
 - Receive the configs with the copy icon at the bottom of the page
-# Install Steps
+# Installation Steps
 1. Download File Template
 ```sh
 sudo wget -N -P /var/lib/marzban/templates/subscription/  https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
@@ -83,12 +83,12 @@ sudo wget -N -P /var/lib/marzban/templates/subscription/  https://raw.githubuser
 2. Enter the following commands in your server's terminal:
 ```sh
 echo 'CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"' | sudo tee -a /opt/marzban/.env
-echo 'CLASH_SUBSCRIPTION_TEMPLATE="subscription/index.html"' | sudo tee -a /opt/marzban/.env
+echo 'SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"' | sudo tee -a /opt/marzban/.env
 ```
-Or put the following values in `.env` file in `/opt/marzban` folder
+Or uncomment the following values in `.env` file in `/opt/marzban` folder by removing # at the begining of them.
 ```sh
 CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"
-CLASH_SUBSCRIPTION_TEMPLATE="subscription/index.html"
+SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
 ```
 
 3. Restart Marzban
