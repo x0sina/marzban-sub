@@ -1,69 +1,51 @@
 <p align="center">
-  <a href="https://github.com/x0sina/marzban-sub" target="_blank" rel="noopener noreferrer" >
-    <img src="https://github.com/x0sina/marzban-sub/blob/main/Marzban-Sub.png" alt="SubPage screenshots" width="800" height="auto">
+  <a href="https://github.com/oXIIIo/subscription-template" target="_blank" rel="noopener noreferrer">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/x0sina/marzban-sub/main/preview.jpg">
+      <img width="363" height="328" src="https://raw.githubusercontent.com/x0sina/marzban-sub/main/preview.jpg">
+    </picture>
   </a>
 </p>
+<h1 align="center"/>قالب سابسکریپشن برای پنل  <a href="https://github.com/Gozargah/Marzban">مرزبان</a></h1>
 
-This is a edited version of  <a href="https://github.com/MuhammadAshouri/marzban-templates" target="_blank" rel="noopener noreferrer" >MuhammadAshouri/marzban-templates</a> Project. 
+## فهرست مطالب
+- [ویژگی‌ ها](#ویژگی-ها)
+- [مراحل نصب](#مراحل-نصب)
 
-# Usage
+# مقدمه
+یک قالب html ساده برای نمایش بهتر اطلاعات کاربر
 
-First you need to copy [html file](https://github.com/x0sina/marzban-sub/blob/main/index.html) to your sever. You can do it by this:
+# ویژگی ها
+- افزودن سریع لینک سابسکریپشن به برنامه ها
+- لینک دانلود اپلیکیشن های مورد نیاز
+- سه زبانه (روسی,انگلیسی,فارسی)
+- پیج ساب فانتزی با رنگ و لعاب زیبا
+- دریافت کانفیگ ها با آیکون کپی در آخز صفحه
 
-```bash
-cd /opt/marzban
-apt install wget
-wget https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
+# مراحل نصب
+1. دانلود فایل template
+```sh
+sudo wget -N -P /var/lib/marzban/templates/subscription/  https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
 ```
 
-First you need to copy [html file](https://github.com/x0sina/marzban-sub/blob/main/index.html) to your sever. You can do it by this:
-
-```bash
-cd /opt/marzban
-apt install wget
-wget https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
+2. دستورات زیر رو تو ترمینال سرورتون بزنید:
+```sh
+echo 'CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"' | sudo tee -a /opt/marzban/.env
+echo 'CLASH_SUBSCRIPTION_TEMPLATE="subscription/index.html"' | sudo tee -a /opt/marzban/.env
+```
+یا مقادیر زیر رو در فایل `.env` در پوشه `/opt/marzban` قرار بدین
+```sh
+CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"
+CLASH_SUBSCRIPTION_TEMPLATE="subscription/index.html"
 ```
 
-Then you have to map it to your docker container. Add this line to volume section of `docker-compose.yml`:
-
-(DO NOT REPLACE WHOLE FILE, Just the last line)
-```docker
-services:
-    marzban:
-        ...
-        volumes:
-            ...
-            - /opt/marzban/index.html:/code/app/templates/subscription/index.html # this line
-```
-
-Now you can restart your marzban's docker:
-```
+3. ری استارت مرزبان
+```sh
 marzban restart
 ```
 
-# استفاده
+## بروزرسانی
+برای بروزرسانی تمپلیت فقط کافیست مرحله 1 را تکرار کنید.
 
-ابتدا فایل [html file](https://github.com/x0sina/marzban-sub/blob/main/index.html) رو به سرور بفرستید. با دستور زیر میتونید این کارو بکنید:
-
-```bash
-cd /opt/marzban
-apt install wget
-wget https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
-```
-
-حالا باید این فایل به به داکر مپ کنید. خط آخر رو به بخش volumes فایل `docker-compose.yml` اضافه کنید:
-
-(کل فایل رو جایگزین نکنید!!! فقط خط آخر)
-```docker
-services:
-    marzban:
-        ...
-        volumes:
-            ...
-            - /opt/marzban/index.html:/code/app/templates/subscription/index.html # this line
-```
-
-حالا مرزبان رو ری‌استارت کنید:
-```
-marzban restart
-```
+## کپی رایت
+این قالب بر اساس طرح (Profile Card)[https://github.com/MuhammadAshouri/marzban-templates] ساخته شده.
