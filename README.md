@@ -9,7 +9,7 @@
 - [ویژگی‌ ها](#ویژگی-ها)
 - [مراحل نصب](#مراحل-نصب)
 - [زبان پیش فرض](#زبان-پیش-فرض)
-- [شخصی سازی](#شخصی-سازی)
+-  [نسخه هاست](#نسخه-هاست)
 
 # مقدمه
 یک قالب html ساده برای نمایش بهتر اطلاعات کاربر
@@ -44,6 +44,9 @@ marzban restart
 ```
 
 
+## بروزرسانی
+برای بروزرسانی تمپلیت فقط کافیست مرحله 1 را تکرار کنید.
+
 # زبان پیش فرض
 برای عوض کردن زبان پیش فرض کافیست در فایل html به آخر کد مراجعه کنید و زبان مورد نظرتونو توی تگ select بالا بیارین. مثال:
 ```
@@ -75,8 +78,8 @@ background: url('https://4kwallpapers.com
 ```
 پس از اعمال تغییرات فایل رو سیو کنید و مرزبان رو ریستارت کنید.
 
-## بروزرسانی
-برای بروزرسانی تمپلیت فقط کافیست مرحله 1 را تکرار کنید.
+## نسخه هاست
+برای استفاده از نسخه هاست فولدر sub رو در هاست آپلود کنید و در فایل index.php مقدار $baseUrl را به آدرس پنل خود تغییر دهید.
 
 ## کپی رایت
 این قالب بر اساس طرح <a href="https://github.com/Gozargah/Marzban">Marzban Templates<a> ساخته شده.
@@ -86,6 +89,7 @@ background: url('https://4kwallpapers.com
 - [Installation Steps](#Install-Steps)
 - [Default Language](#Default-Language)
 - [Personalization](#Personalization)
+- [Host Version](#Host-Version)
 
 # Introduction
 A simple html template to better display user information
@@ -118,6 +122,9 @@ SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
 marzban restart
 ```
 
+## Update
+To update the template, just repeat step 1.
+
 # Default Language
 To change the default language, just refer to the end of the code in the html file and select the desired language in the select tag. Example:
 ```
@@ -149,8 +156,8 @@ background: url('https://4kwallpapers.com
 ```
 After making changes, save the file and restart Marzban.
 
-## Update
-To update the template, just repeat step 1.
+## Host Version
+To use the host version, upload the sub folder to the host and change the value of $baseUrl to your panel address in the index.php file.
 
 ## Copyright
 This template is based on <a href="https://github.com/Gozargah/Marzban">Marzban Templates<a> design.
