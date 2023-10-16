@@ -79,7 +79,8 @@ background: url('https://4kwallpapers.com
 پس از اعمال تغییرات فایل رو سیو کنید و مرزبان رو ریستارت کنید.
 
 ## نسخه هاست
-برای استفاده از نسخه هاست فولدر sub رو در هاست آپلود کنید و در فایل index.php مقدار $baseUrl را به آدرس پنل خود تغییر دهید.
+برای استفاده از نسخه هاست فولدر sub رو در هاست آپلود کنید و در فایل index.php مقدار $baseUrl را مانند مثال زیر به آدرس پنل خود تغییر دهید. یادتون باشه اگر برای دامنه پنلتون سرتیفیکیت ندارین کلمه اول رو http بزارید.
+$baseUrl = "https://BaseUrl:PORT"
 
 ## کپی رایت
 این قالب بر اساس طرح <a href="https://github.com/Gozargah/Marzban">Marzban Templates<a> ساخته شده.
@@ -157,7 +158,9 @@ background: url('https://4kwallpapers.com
 After making changes, save the file and restart Marzban.
 
 ## Host Version
-To use the host version, upload the sub folder to the host and change the value of $baseUrl to your panel address in the index.php file.
+To use the host version, upload the sub folder to the host and change the value of $baseUrl to your panel address in the index.php file just like the following example. Remember to write http if you don't have an SSL for your panel domain.
+
+$baseUrl = "https://BaseUrl:PORT" 
 
 ## Copyright
 This template is based on <a href="https://github.com/Gozargah/Marzban">Marzban Templates<a> design.
