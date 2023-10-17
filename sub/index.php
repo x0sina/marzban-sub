@@ -22,7 +22,7 @@ if (!function_exists('str_contains'))
     die('Please upgrade your PHP version to 8 or above');
 $isTextHTML = str_contains(($_SERVER['HTTP_ACCEPT'] ?? ''), 'text/html');
 
-const BASE_URL = "https://yourdomain.com:443"; // Replace IP address and port
+const BASE_URL = "https://yourdomain.com:443"; // Replace IP address and port and set https for SSL
 
 $URL = BASE_URL . $_SERVER['REQUEST_URI'] ?? '';
 $URL .= $isTextHTML ? '/info' : '';
@@ -4028,7 +4028,7 @@ if ($isTextHTML) {
                             <span class="inline-block dark:text-white text-black font-semibold text-lg"><?= $user["username"] ?></span>
                             <span
                                 class="px-4 py-2 rounded-full inline-block shadow-md shadow-green-900 font-bold text-gray-200"
-                                x-data="{status: '<?= $user["status"] ?>'"
+                                x-data="{status: '<?= $user["status"] ?>'}"
                                 x-text="[status == 'active' ? $t('active') : status == 'limited' ? $t('limited') : status == 'expired' ? $t('expired') : $t('disabled')]"
                                 :class="[status == 'active' ? 'bg-green-500' : status == 'limited' ? 'bg-red-600' : status == 'expired' ? 'bg-orange-600' : 'bg-gray-600']"></span>
                         </div>
