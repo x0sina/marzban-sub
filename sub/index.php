@@ -58,7 +58,7 @@ if ($isTextHTML) {
         <title><?= $user['username'] ?> - Sub Info</title>
         <style>
             .asli {
-                background: url('https://4kwallpapers.com/images/walls/thumbs_3t/11574.jpeg') no-repeat;
+                background: url('https://4kwallpapers.com/images/wallpapers/windows-server-2025-3840x2400-15386.jpg') no-repeat;
                 background-position: center;
                 background-size: cover;
             }
@@ -3591,7 +3591,7 @@ if ($isTextHTML) {
                             },
                             {
                                 name: "Github",
-                                url: "https://github.com/2dust/v2rayNG/releases/download/1.8.5/v2rayNG_1.8.5.apk",
+                                url: "https://github.com/2dust/v2rayNG/releases/download/1.8.17/v2rayNG_1.8.17.apk",
                                 best: false,
                             },
                         ],
@@ -3601,12 +3601,12 @@ if ($isTextHTML) {
                         url: [
                             {
                                 name: "Arm64",
-                                url: "https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.1.4/NB4A-1.1.4-arm64-v8a.apk",
+                                url: "https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.2.9/NB4A-1.2.9-arm64-v8a.apk",
                                 best: false,
                             },
                             {
                                 name: "Armeabi",
-                                url: "https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.1.4/NB4A-1.1.4-armeabi-v7a.apk",
+                                url: "https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.2.9/NB4A-1.2.9-armeabi-v7a.apk",
                                 best: false,
                             },
                         ],
@@ -3618,7 +3618,7 @@ if ($isTextHTML) {
                         url: [
                             {
                                 name: "",
-                                url: "https://github.com/MatsuriDayo/nekoray/releases/download/3.8/nekoray-3.8-2023-06-14-windows64.zip",
+                                url: "https://github.com/MatsuriDayo/nekoray/releases/download/3.26/nekoray-3.26-2023-12-09-windows64.zip",
                                 best: true,
                             },
                         ],
@@ -3628,7 +3628,7 @@ if ($isTextHTML) {
                         url: [
                             {
                                 name: "",
-                                url: "https://github.com/2dust/v2rayN/releases/download/6.27/zz_v2rayN-With-Core-SelfContained.7z",
+                                url: "https://github.com/2dust/v2rayN/releases/download/6.33/zz_v2rayN-With-Core-SelfContained.7z",
                                 best: false,
                             },
                         ],
