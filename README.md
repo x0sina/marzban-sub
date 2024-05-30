@@ -24,7 +24,7 @@
 # مراحل نصب
 1. دانلود فایل template
 ```sh
-sudo wget -N -P /var/lib/marzban/templates/subscription/  https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
+sudo wget -N -P /var/lib/marzban/templates/subscription/  https://raw.githubusercontent.com/NotaNerd021/marzban-sub/main/index.html
 ```
 
 2. دستورات زیر رو تو ترمینال سرورتون بزنید:
@@ -53,7 +53,6 @@ marzban restart
 <select id="countries" class="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white :focus:ring-blue-500 :focus:border blue-500">
   <option value="fa">فارسی</option>
   <option value="en">English</option>
-  <option value="ru">Русский</option>
 </select>
 ```
 در این مثال زبان اصلی فارسی است.
@@ -66,11 +65,7 @@ nano /var/lib/marzban/templates/subscription/index.html
 ```
 سپس با دکمه های ترکیبی Ctrl + W سرچ بار رو باز کنید و برای عوض کردن ایدی پشتیبانی تلگرام عبارت زیر رو سرچ کنید:
 ```
-https://t.me/yourID
-```
-برای لوگوی کاربر این عبارتو سرچ کنید:
-```
-images/marzban.svg
+https://t.me/
 ```
 برای تصویر پس زمینه این عبارتو سرچ کنید:
 ```
@@ -83,9 +78,6 @@ background: url('https://4kwallpapers.com
 ```
 const BASE_URL = "https://BaseUrl:PORT";
 ```
-
-## کپی رایت
-این قالب بر اساس طرح <a href="https://github.com/Gozargah/Marzban">Marzban Templates<a> ساخته شده.
 
 # Table of Contents
 - [Attributes](#Attributes)
@@ -147,11 +139,7 @@ nano /var/lib/marzban/templates/subscription/index.html
 ```
 Then open the search bar with Ctrl + W combination buttons and search for the following phrase to change Telegram support ID:
 ```
-https://t.me/yourID
-```
-Search for the user's logo:
-```
-images/marzban.svg
+https://t.me/
 ```
 Search for the background image:
 ```
@@ -164,6 +152,3 @@ To use the host version, upload the sub folder to the host and change the value 
 ```
 const BASE_URL = "https://BaseUrl:PORT";
 ```
-
-## Copyright
-This template is based on <a href="https://github.com/Gozargah/Marzban">Marzban Templates<a> design.
