@@ -3200,7 +3200,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             document.getElementById("android-v2rayng").href = `v2rayng://install-config?url=${fullUrl}`;
             document.getElementById("ios-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#Sub`;
             document.getElementById("android-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#Sub`;
-            document.getElementById("android-nekobox").href = `sn://subscription?url=${fullUrl}&name=Sub`;
+            document.getElementById("android-hiddify").href = `hiddify://import/${fullUrl}#Sub`;
             document.getElementById("windows-clashverge").href = `clash://install-config?url=${fullUrl}`
 
 
@@ -3545,16 +3545,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                     ],
                     tutorial: "",
                 },
-                NekoBox: {
+                Hiddify: {
                     url: [
                         {
-                            name: "Arm64",
-                            url: "https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.2.9/NB4A-1.2.9-arm64-v8a.apk",
-                            best: false,
-                        },
-                        {
-                            name: "Armeabi",
-                            url: "https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.2.9/NB4A-1.2.9-armeabi-v7a.apk",
+                            name: "Universal",
+                            url: "https://github.com/hiddify/hiddify-next/releases/download/v1.4.0/Hiddify-Android-universal.apk",
                             best: false,
                         },
                     ],
@@ -3617,7 +3612,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 telsupport: "Telegram Support",
                 telProxy: "Telegram Proxy",
                 v2rayNG: "Android - Download v2rayNG",
-                NekoBox: "Android - Download NekoBox",
+                Hiddify: "Android - Download Hiddify",
                 SingBox: "Android - Download SingBox",
                 Streisand: "iOS - Download Streisand",
                 FoXray: "iOS - Downaload FoXray",
@@ -3626,7 +3621,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 addV2rayNG: "v2rayNG",
                 addStreisand: "Streisand",
                 addFoXray: "FoXray",
-                addNekoBox: "NekoBox",
+                addHiddify: "Hiddify",
                 addV2Box: "v2Box",
                 addShadowrocket: "Shadowrocket",
                 addsingbox: "Sing-Box",
@@ -3699,7 +3694,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 telProxy: "پروکسی تلگرام",
                 telsupport: "پشتیبانی تلگرام",
                 v2rayNG: "اندروید - دانلود برنامه v2rayNG",
-                NekoBox: "اندروید - دانلود برنامه NekoBox",
+                Hiddify: "اندروید - دانلود برنامه Hiddify",
                 SingBox: "اندروید - دانلود برنامه Sing-Box",
                 Streisand: "آی او اِس - دانلود برنامه Streisand",
                 FoXray: "آی او اِس - دانلود برنامه FoXray",
@@ -3708,7 +3703,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 addV2rayNG: "v2rayNG",
                 addStreisand: "Streisand",
                 addFoXray: "FoXray",
-                addNekoBox: "NekoBox",
+                addHiddify: "Hiddify",
                 addV2Box: "v2Box",
                 addShadowrocket: "Shadowrocket",
                 addsingbox: "Sing-Box",
@@ -5299,7 +5294,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                             d="M9.17 1.165C9.07551 0.997296 8.92015 0.872344 8.73609 0.816007C8.55202 0.75967 8.35334 0.776261 8.18117 0.862346C8.009 0.948432 7.87652 1.09742 7.81115 1.27847C7.74578 1.45953 7.75253 1.65878 7.83 1.835L8.667 3.51C8.00017 3.9556 7.42938 4.53028 6.98832 5.20012C6.54726 5.86996 6.24487 6.62137 6.099 7.41L5.99 8H18.01L17.901 7.41C17.7551 6.62137 17.4527 5.86996 17.0117 5.20012C16.5706 4.53028 15.9998 3.9556 15.333 3.51L16.171 1.835C16.258 1.65726 16.2713 1.45232 16.2078 1.26486C16.1444 1.07739 16.0095 0.922596 15.8324 0.834197C15.6553 0.745798 15.4505 0.730964 15.2626 0.792928C15.0746 0.854892 14.9188 0.988631 14.829 1.165L13.992 2.839C13.352 2.61401 12.6784 2.49938 12 2.5C11.3216 2.49938 10.648 2.61401 10.008 2.839L9.17 1.165ZM3.5 9C3.10218 9 2.72064 9.15804 2.43934 9.43934C2.15804 9.72064 2 10.1022 2 10.5V15.5C2 15.8978 2.15804 16.2794 2.43934 16.5607C2.72064 16.842 3.10218 17 3.5 17C3.89782 17 4.27936 16.842 4.56066 16.5607C4.84196 16.2794 5 15.8978 5 15.5V10.5C5 10.1022 4.84196 9.72064 4.56066 9.43934C4.27936 9.15804 3.89782 9 3.5 9ZM20.5 9C20.1022 9 19.7206 9.15804 19.4393 9.43934C19.158 9.72064 19 10.1022 19 10.5V15.5C19 15.8978 19.158 16.2794 19.4393 16.5607C19.7206 16.842 20.1022 17 20.5 17C20.8978 17 21.2794 16.842 21.5607 16.5607C21.842 16.2794 22 15.8978 22 15.5V10.5C22 10.1022 21.842 9.72064 21.5607 9.43934C21.2794 9.15804 20.8978 9 20.5 9ZM18 9H6V17.5C6 17.8978 6.15804 18.2794 6.43934 18.5607C6.72064 18.842 7.10218 19 7.5 19H8V21.5C8 21.8978 8.15804 22.2794 8.43934 22.5607C8.72064 22.842 9.10218 23 9.5 23C9.89782 23 10.2794 22.842 10.5607 22.5607C10.842 22.2794 11 21.8978 11 21.5V19H13V21.5C13 21.8978 13.158 22.2794 13.4393 22.5607C13.7206 22.842 14.1022 23 14.5 23C14.8978 23 15.2794 22.842 15.5607 22.5607C15.842 22.2794 16 21.8978 16 21.5V19H16.5C16.8978 19 17.2794 18.842 17.5607 18.5607C17.842 18.2794 18 17.8978 18 17.5V9Z"
                                                                             fill="white" />
                                                                     </svg>
-                                                                    <span x-text="$t('addNekoBox')">
+                                                                    <span x-text="$t('addHiddify')">
                                                                     </span>
                                                                 </div>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -5333,7 +5328,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                     <p x-text="$t('clickForDownload')"
                                                                         class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                     </p>
-                                                                    <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.2.9/NB4A-1.2.9-arm64-v8a.apk"
+                                                                    <a href="https://github.com/hiddify/hiddify-next/releases/download/v1.4.0/Hiddify-Android-universal.apk"
                                                                         class=" flex mb-4 items-center gap-x-4 w-full
                                                                         bg-gray-800 shadow-md px-3 py-2 rounded-3xl
                                                                         justify-between">
@@ -5364,7 +5359,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                     <p x-text="$t('clickForAdd')"
                                                                         class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                     </p>
-                                                                    <a id="android-nekobox" class=" flex mb-4 items-center gap-x-4 w-full
+                                                                    <a id="android-Hiddify" class=" flex mb-4 items-center gap-x-4 w-full
                                                                         bg-stone-800 shadow-md px-3 py-2 rounded-3xl
                                                                         justify-between">
                                                                         <lord-icon class="w-8 h-8"
