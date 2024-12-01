@@ -3200,8 +3200,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             document.getElementById("android-v2rayng").href = `v2rayng://install-config?url=${fullUrl}`;
             document.getElementById("ios-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#Sub`;
             document.getElementById("android-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#Sub`;
-            document.getElementById("android-nekobox").href = `sn://subscription?url=${fullUrl}&name=Sub`;
-            document.getElementById("windows-clashverge").href = `clash://install-config?url=${fullUrl}`
+            document.getElementById("windows-hiddify").href = `hiddify://import/${fullUrl}#Sub`;
+            document.getElementById("iOS-hiddify").href = `hiddify://import/${fullUrl}#Sub`;
+            document.getElementById("android-hiddify").href = `hiddify://import/${fullUrl}#Sub`;
 
 
             // Android Apps
@@ -3270,20 +3271,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
         }
         function getChartColor(percentage) {
             return percentage < 40 ? 'text-green-500' : percentage < 80 ? 'text-yellow-600' : 'text-red-500';
-        }
-
-        function openFoXrayURL() {
-            var currentURL = window.location.href;
-            var encodedURL = btoa(currentURL);
-            var foXrayURL = 'foxray://yiguo.dev/sub/add/?url=' + encodedURL + '#name';
-            window.location.href = foXrayURL;
-        }
-
-        function openShadowrocketURL() {
-            var currentURL = window.location.href;
-            var encodedURL = btoa(currentURL);
-            var shadowrocketLink = 'sub://' + encodedURL;
-            window.location.href = shadowrocketLink;
         }
 
         function openDynamicModal(title, url) {
@@ -3518,12 +3505,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                     ],
                     tutorial: "",
                 },
-                Shadowrocket: {
+                HiddifyNext: {
                     url: [
                         {
-                            name: "$3.99",
-                            url: "https://apps.apple.com/ca/app/shadowrocket/id932747118",
-                            best: false,
+                            name: "IOS 15+",
+                            url: "https://apps.apple.com/us/app/hiddify-proxy-vpn/id6596777532",
+                            best: true,
                         },
                     ],
                     tutorial: "",
@@ -3544,22 +3531,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                         },
                     ],
                     tutorial: "",
-                },
-                NekoBox: {
-                    url: [
-                        {
-                            name: "Arm64",
-                            url: "https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.2.9/NB4A-1.2.9-arm64-v8a.apk",
-                            best: false,
-                        },
-                        {
-                            name: "Armeabi",
-                            url: "https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.2.9/NB4A-1.2.9-armeabi-v7a.apk",
-                            best: false,
-                        },
-                    ],
-                    tutorial: "",
-                },
+                }
             },
             Windows: {
                 nekoray: {
@@ -3617,25 +3589,17 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 telsupport: "Telegram Support",
                 telProxy: "Telegram Proxy",
                 v2rayNG: "Android - Download v2rayNG",
-                NekoBox: "Android - Download NekoBox",
                 SingBox: "Android - Download SingBox",
                 Streisand: "iOS - Download Streisand",
-                FoXray: "iOS - Downaload FoXray",
                 V2Box: "iOS - Download v2Box",
                 addto: "Quick Install",
                 addV2rayNG: "v2rayNG",
                 addStreisand: "Streisand",
-                addFoXray: "FoXray",
-                addNekoBox: "NekoBox",
                 addV2Box: "v2Box",
-                addShadowrocket: "Shadowrocket",
                 addsingbox: "Sing-Box",
                 addV2rayN: "v2rayN",
                 addnekoray: "Nekoray",
-                addClash: "Clash",
-                addClashMeta: "Clash Meta",
-                addClashVerge: "Clash Verge",
-                addClashX: "Clash X",
+                addHiddify: "Hiddify",
                 install: "Click on the download link to download the program for your operating system!",
                 support: "Support",
                 oneClick: "To use Config, just click on the program you are using!",
@@ -3699,25 +3663,17 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 telProxy: "پروکسی تلگرام",
                 telsupport: "پشتیبانی تلگرام",
                 v2rayNG: "اندروید - دانلود برنامه v2rayNG",
-                NekoBox: "اندروید - دانلود برنامه NekoBox",
                 SingBox: "اندروید - دانلود برنامه Sing-Box",
                 Streisand: "آی او اِس - دانلود برنامه Streisand",
-                FoXray: "آی او اِس - دانلود برنامه FoXray",
                 V2Box: "آی او اِس - دانلود برنامه v2Box",
                 addto: "نصب با یک کلیک",
                 addV2rayNG: "v2rayNG",
                 addStreisand: "Streisand",
-                addFoXray: "FoXray",
-                addNekoBox: "NekoBox",
                 addV2Box: "v2Box",
-                addShadowrocket: "Shadowrocket",
                 addsingbox: "Sing-Box",
                 addV2rayN: "v2rayN",
                 addnekoray: "Nekoray",
-                addClash: "Clash",
-                addClashMeta: "Clash Meta",
-                addClashVerge: "Clash Verge",
-                addClashX: "Clash X",
+                addHiddify: "Hiddify",
                 install: "برای دانلود برنامه مورد نظر نسبت به سیستم عامل خودتون روی لینک دانلود کلیک کنید!",
                 support: "پشتیبانی",
                 oneClick: "برای نصب سریع برنامه مورد نظر رو انتخاب کنید.",
@@ -3784,22 +3740,16 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 NekoBox: "Android - Download NekoBox",
                 SingBox: "Android - Download SingBox",
                 Streisand: "iOS - Download Streisand",
-                FoXray: "iOS - Downaload FoXray",
                 V2Box: "iOS - Download v2Box",
                 addto: "Быстрая настройка",
                 addV2rayNG: "v2rayNG",
                 addStreisand: "Streisand",
-                addFoXray: "FoXray",
                 addNekoBox: "NekoBox",
                 addV2Box: "v2Box",
-                addShadowrocket: "Shadowrocket",
                 addsingbox: "Sing-Box",
                 addV2rayN: "v2rayN",
                 addnekoray: "Nekoray",
-                addClash: "Clash",
-                addClashMeta: "Clash Meta",
-                addClashVerge: "Clash Verge",
-                addClashX: "Clash X",
+                addHiddify: "Hiddify",
                 install: "Нажмите на следующие кнопки, чтобы загрузить программу для вашей операционной системы!",
                 support: "Поддержка",
                 oneClick: "Для быстрой установки конфига, выберите приложение, которое вы используете!",
@@ -4032,6 +3982,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                             </svg>
                                             <span x-text="$t('iOS')">
                                             </span>
+                                            
                                         </div>
 
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -4216,7 +4167,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                         <p x-text="$t('routingInfo')"
                                                                             class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                         </p>
-                                                                        <a href="streisand://aW1wb3J0L3JvdXRlOi8vWW5Cc2FYTjBNRERWQVFJREJBVUdEaU1rSlZWeWRXeGxjMTFrYjIxaGFXNU5ZWFJqYUdWeVZHNWhiV1ZlWkc5dFlXbHVVM1J5WVhSbFozbFVkWFZwWktJSEZ0VUlDUW9MREEwT0R4SVZXMjkxZEdKdmRXNWtWR0ZuWFdSdmJXRnBiazFoZEdOb1pYSldaRzl0WVdsdVVtbHdWMjVsZEhkdmNtdFdaR2x5WldOMFZtaDVZbkpwWktJUUVWOFFFMmRsYjNOcGRHVTZZMkYwWldkdmNua3RhWEpmRUE5eVpXZGxlSEE2TGlwY1hDNXBjaVNpRXhSWVoyVnZhWEE2YVhKZFoyVnZhWEE2Y0hKcGRtRjBaVjhRUkZSRFVDd2dWVVJRTENCSVZGUlFMQ0JJVkZSUVV5d2dVMU5JTENCVFRWUlFMQ0JUVGsxUUxDQk9WRkFzSUVaVVVDd2dVRTlRTXl3Z1NVMUJVQ3dnVkdWc2JtVjAxQmNZQ2d3WkRob1ZXMjkxZEdKdmRXNWtWR0ZuWFdSdmJXRnBiazFoZEdOb1pYSlZZbXh2WTJ1b0d4d2RIaDhnSVNKZkVCaG5aVzl6YVhSbE9tTmhkR1ZuYjNKNUxXRmtjeTFoYkd4ZkVCUm5aVzl6YVhSbE9tTmhkR1ZuYjNKNUxXRmtjMThRRVdkbGIzTnBkR1U2ZVdGb2IyOHRZV1J6WHhBVFoyVnZjMmwwWlRwemNHOTBhV1o1TFdGa2MxOFFFbWRsYjNOcGRHVTZaMjl2WjJ4bExXRmtjMThRRVdkbGIzTnBkR1U2WVhCd2JHVXRZV1J6WHhBU1oyVnZjMmwwWlRwaGJXRjZiMjR0WVdSelh4QVJaMlZ2YzJsMFpUcGhaRzlpWlMxaFpITnVBRWtBVWdBdEFFUUFhUUJ5QUdVQVl3QjBBQ0RZUE4zdTJEemQ5MXhKVUVsbVRtOXVUV0YwWTJoZkVDUTNNamt5T1RCRlJDMUdSVFpCTFRReE9VVXRPVE15TmkxRE1rVkJOREl3UmpWQk0wTUFDQUFUQUJrQUp3QXNBRHNBUUFCREFFNEFXZ0JvQUc4QWNnQjZBSUVBaUFDTEFLRUFzd0MyQUw4QXpRRVVBUjBCS1FFM0FUMEJSZ0ZoQVhnQmpBR2lBYmNCeXdIZ0FmUUNFUUllQUFBQUFBQUFBZ0VBQUFBQUFBQUFKZ0FBQUFBQUFBQUFBQUFBQUFBQUFrVT0="
+                                                                        <a href="streisand://aW1wb3J0L3JvdXRlOi8vWW5Cc2FYTjBNRERWQVFJREJBVUdCd2dKQ2xSdVlXMWxWSFYxYVdSZVpHOXRZV2x1VTNSeVlYUmxaM2xkWkc5dFlXbHVUV0YwWTJobGNsVnlkV3hsYzI0QVNRQlNBQzBBUkFCcEFISUFaUUJqQUhRQUlOZzgzZTdZUE4zM1h4QWtNVGd6TlVZMFFqQXRRVGhDUWkwME5UaEVMVUkxUlRZdE5ETXhORGhGUWtNME5rWkVYRWxRU1daT2IyNU5ZWFJqYUZab2VXSnlhV1NsQ3hJVkhTSFREQTBPRHhBUlZIQnZjblJYYm1WMGQyOXlhMXR2ZFhSaWIzVnVaRlJoWjFNME5ETlRkV1J3VldKc2IyTnIwd3dORGhNVUVWTTROVE5UZEdOdzFRUVdGdzBPQ1JnYUd4eFdaRzl0WVdsdVVtbHdvUmxmRUJOblpXOXphWFJsT21OaGRHVm5iM0o1TFdseW9GQldaR2x5WldOMDB3UVhEZ2tlSEtJZklGaG5aVzlwY0RwcGNsMW5aVzlwY0Rwd2NtbDJZWFJsMUFRV0RRNEpJaHNSb1NOZkVCaG5aVzl6YVhSbE9tTmhkR1ZuYjNKNUxXRmtjeTFoYkd3QUNBQVRBQmdBSFFBc0FEb0FRQUJkQUlRQWtRQ1lBSjRBcFFDcUFMSUF2Z0RDQU1ZQXpBRFRBTmNBMndEbUFPMEE4QUR5QVFnQkNRRUtBUkVCR0FFYkFTUUJNZ0U3QVQwQUFBQUFBQUFDQVFBQUFBQUFBQUFrQUFBQUFBQUFBQUFBQUFBQUFBQUJXQT09"
                                                                             class="flex mb-4 items-center gap-x-4 w-full shadow-md px-3 py-2 bg-gradient-to-r from-green-500 via-green-600 to-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 transition-all duration-300 justify-between rounded-2xl">
                                                                             <div class="rounded-xl overflow-hidden">
                                                                                 <svg width="37" height="25"
@@ -4305,142 +4256,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                             </lord-icon>
                                                                         </a>
 
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div
-                                                    class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all duration-300 font-medium rounded-2xl">
-                                                    <!-- Accordion item -->
-                                                    <div x-data="{ expanded: false }">
-                                                        <h2>
-                                                            <button style="direction: ltr;" id="faqs-title-01"
-                                                                type="button"
-                                                                class="flex items-center p-4 justify-between w-full text-left font-semibold"
-                                                                @click="expanded = !expanded" :aria-expanded="expanded"
-                                                                aria-controls="faqs-text-01">
-                                                                <div
-                                                                    class="flex items-center justify-start gap-x-2 text-lg sm:text-xl font-medium">
-                                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <g clip-path="url(#clip0_20_20)">
-                                                                            <path
-                                                                                d="M11.9523 10.765C12.066 11.178 11.8686 11.5256 11.5874 11.8681C8.48852 15.6661 5.39565 19.4692 2.29679 23.2672C2.12928 23.4686 1.94383 23.6752 1.71052 23.8162C1.29175 24.063 0.693518 23.9875 0.346542 23.7004C-0.0423113 23.383 -0.126064 22.9095 0.208948 22.4864C0.974689 21.5193 1.76436 20.5673 2.54805 19.6102C4.62991 17.0564 6.71176 14.4975 8.80559 11.9487C8.96711 11.7523 8.93122 11.6263 8.77568 11.44C6.22121 8.45294 3.67871 5.46088 1.14219 2.46379C0.514047 1.72333 0.669589 0.776345 1.48319 0.282706C2.29081 -0.210934 3.40352 -0.0497451 4.04364 0.700788C6.13746 3.14884 8.20735 5.60696 10.2892 8.06004C10.6781 8.52346 11.0609 8.99191 11.4677 9.44526C11.8087 9.83312 12.0121 10.2512 11.9523 10.765Z"
-                                                                                fill="white" />
-                                                                            <path
-                                                                                d="M22.7803 0.176945C23.3008 0.171908 23.6298 0.317984 23.8452 0.635324C24.0905 1.00303 24.0307 1.35563 23.7615 1.68809C22.7145 2.97759 21.6616 4.2671 20.6147 5.55661C18.9337 7.62183 17.2586 9.68706 15.5597 11.7472C15.3563 11.9941 15.3563 12.1452 15.5656 12.392C18.144 15.4495 20.7105 18.5121 23.2709 21.5797C23.8632 22.2849 23.6897 23.2168 22.906 23.6903C22.0505 24.2091 20.9737 24.0681 20.3455 23.3276C18.3534 20.9602 16.3673 18.5776 14.3811 16.2051C13.8128 15.5251 13.2445 14.8501 12.6821 14.1701C12.0899 13.4599 12.0719 12.6791 12.6462 11.9739C15.7152 8.21118 18.7901 4.45347 21.8591 0.685695C22.1163 0.383467 22.4094 0.171908 22.7803 0.176945Z"
-                                                                                fill="white" />
-                                                                        </g>
-                                                                        <defs>
-                                                                            <clipPath id="clip0_20_20">
-                                                                                <rect width="24" height="24"
-                                                                                    fill="white" />
-                                                                            </clipPath>
-                                                                        </defs>
-                                                                    </svg>
-                                                                    <span x-text="$t('addFoXray')">
-                                                                    </span>
-                                                                </div>
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                    viewBox="0 0 24 24" stroke-width="1.5"
-                                                                    stroke="currentColor"
-                                                                    :class="{'!rotate-180': expanded}"
-                                                                    class="w-6 h-6 mx-6 transform origin-center transition duration-200 ease-out">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round"
-                                                                        d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-                                                                </svg>
-                                                            </button>
-                                                        </h2>
-                                                        <div id="faqs-text-01" role="region"
-                                                            aria-labelledby="faqs-title-01"
-                                                            class="grid text-sm text-white overflow-hidden transition-all duration-300 ease-in-out"
-                                                            :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
-                                                            <div class="overflow-hidden">
-                                                                <div class="p-4 pb-6">
-                                                                    <div class="flex flex-col">
-                                                                        <div class="flex items-center gap-x-2">
-                                                                            <span x-text="$t('needediOS')"></span>
-                                                                            <div
-                                                                                class="flex items-center rtl:flex-row-reverse rtl:justify-end gap-x-1">
-                                                                                <svg width="24" height="24"
-                                                                                    viewBox="0 0 24 24" fill="none"
-                                                                                    xmlns="http://www.w3.org/2000/svg">
-                                                                                    <g clip-path="url(#clip0_23_24)">
-                                                                                        <path fill-rule="evenodd"
-                                                                                            clip-rule="evenodd"
-                                                                                            d="M4.36364 0C3.20633 0 2.09642 0.459739 1.27808 1.27808C0.459739 2.09642 0 3.20633 0 4.36364V19.6364C0 20.7937 0.459739 21.9036 1.27808 22.7219C2.09642 23.5403 3.20633 24 4.36364 24H19.6364C20.7937 24 21.9036 23.5403 22.7219 22.7219C23.5403 21.9036 24 20.7937 24 19.6364V4.36364C24 3.20633 23.5403 2.09642 22.7219 1.27808C21.9036 0.459739 20.7937 0 19.6364 0H4.36364ZM3.81818 8.82109C3.81818 8.53176 3.93312 8.25429 4.1377 8.0497C4.34229 7.84512 4.61976 7.73018 4.90909 7.73018C5.19842 7.73018 5.47589 7.84512 5.68048 8.0497C5.88507 8.25429 6 8.53176 6 8.82109C6 9.11042 5.88507 9.3879 5.68048 9.59248C5.47589 9.79707 5.19842 9.912 4.90909 9.912C4.61976 9.912 4.34229 9.79707 4.1377 9.59248C3.93312 9.3879 3.81818 9.11042 3.81818 8.82109ZM14.4545 10.9091C14.4545 9.912 15.3665 8.45455 17.4545 8.45455C18.2564 8.45455 18.9818 8.844 19.4782 9.25745C19.7345 9.47127 19.9604 9.71564 20.1295 9.96982C20.2833 10.2 20.4545 10.5338 20.4545 10.9091H18.8182C18.8182 10.9495 18.8236 10.9735 18.8247 10.9789C18.8095 10.9432 18.7905 10.9092 18.768 10.8775C18.6726 10.7416 18.5588 10.6197 18.4298 10.5153C18.1091 10.2469 17.7425 10.0909 17.4545 10.0909C16.2753 10.0909 16.0931 10.8087 16.0909 10.908C16.0876 10.9036 16.0887 10.908 16.0909 10.9091V10.908C16.1567 10.9741 16.2344 11.027 16.32 11.064C16.632 11.22 17.0793 11.3356 17.6531 11.4785L17.7022 11.4916C18.2105 11.6182 18.8302 11.7731 19.32 12.0185C19.8349 12.276 20.4545 12.7636 20.4545 13.6364C20.4545 14.6335 19.5425 16.0909 17.4545 16.0909C15.3665 16.0909 14.4545 14.6335 14.4545 13.6364H16.0909C16.0909 13.7302 16.2698 14.4545 17.4545 14.4545C18.6338 14.4545 18.816 13.7367 18.8182 13.6375C18.8215 13.6418 18.8204 13.6375 18.8182 13.6364V13.6375C18.7524 13.5714 18.6747 13.5184 18.5891 13.4815C18.2771 13.3255 17.8298 13.2098 17.256 13.0669L17.2069 13.0538C16.6985 12.9273 16.0789 12.7724 15.5891 12.5269C15.0742 12.2695 14.4545 11.7818 14.4545 10.9091ZM8.45455 12.2727C8.45455 10.9931 9.38182 10.0909 10.3636 10.0909C11.3455 10.0909 12.2727 10.9931 12.2727 12.2727C12.2727 13.5524 11.3455 14.4545 10.3636 14.4545C9.38182 14.4545 8.45455 13.5524 8.45455 12.2727ZM10.3636 8.45455C8.33455 8.45455 6.81818 10.2393 6.81818 12.2727C6.81818 14.3062 8.33455 16.0909 10.3636 16.0909C12.3927 16.0909 13.9091 14.3062 13.9091 12.2727C13.9091 10.2393 12.3927 8.45455 10.3636 8.45455ZM4.09091 16.0909V10.3636H5.72727V16.0909H4.09091Z"
-                                                                                            fill="white" />
-                                                                                    </g>
-                                                                                    <defs>
-                                                                                        <clipPath id="clip0_23_24">
-                                                                                            <rect width="24" height="24"
-                                                                                                fill="white" />
-                                                                                        </clipPath>
-                                                                                    </defs>
-                                                                                </svg>
-                                                                                <span class="text-sm">16+</span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="flex items-center rtl:mr-[-10px] ltr:ml-[-10px] md:rtl:mr-[-20px] md:ltr:ml-[-20px]">
-                                                                            <lord-icon
-                                                                                src="https://cdn.lordicon.com/mtdulhdc.json"
-                                                                                trigger="hover"
-                                                                                colors="primary:#fff,secondary:#fff"
-                                                                                class="w-12 h-12 md:w-20 md:h-20 ">
-                                                                            </lord-icon>
-                                                                            <h3 x-text="$t('downloadApp')"
-                                                                                class="text-xl font-black leading-none tracking-tight text-white md:text-2xl">
-                                                                            </h3>
-                                                                        </div>
-                                                                        <p x-text="$t('clickForDownload')"
-                                                                            class="text-sm mb-4 font-normal text-white lg:text-base">
-                                                                        </p>
-                                                                        <a href="https://apps.apple.com/us/app/foxray/id6448898396"
-                                                                            class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
-                                                                            <lord-icon class="w-8 h-8"
-                                                                                src="https://cdn.lordicon.com/albqovim.json"
-                                                                                trigger="loop" delay="1500"
-                                                                                colors="primary:#fff" state="intro">
-                                                                            </lord-icon>
-                                                                            <span x-text="$t('download')"></span>
-                                                                            <lord-icon class="w-8 h-8"
-                                                                                src="https://cdn.lordicon.com/albqovim.json"
-                                                                                trigger="loop" delay="1500"
-                                                                                colors="primary:#fff" state="intro">
-                                                                            </lord-icon>
-                                                                        </a>
-                                                                        <div
-                                                                            class="flex items-center rtl:mr-[-10px] ltr:ml-[-10px] md:rtl:mr-[-20px] md:ltr:ml-[-20px]">
-                                                                            <lord-icon
-                                                                                src="https://cdn.lordicon.com/vcoyflbj.json"
-                                                                                trigger="hover"
-                                                                                colors="primary:#fff,secondary:#fff"
-                                                                                class="w-12 h-12 md:w-20 md:h-20 ">
-                                                                            </lord-icon>
-                                                                            <h3 x-text="$t('addConfigs')"
-                                                                                class="text-xl font-black leading-none tracking-tight text-white md:text-2xl">
-                                                                            </h3>
-                                                                        </div>
-                                                                        <p x-text="$t('clickForAdd')"
-                                                                            class="text-sm mb-4 font-normal text-white lg:text-base">
-                                                                        </p>
-                                                                        <button onclick="openFoXrayURL()"
-                                                                            class="flex mb-4 items-center gap-x-4 w-full bg-stone-800 shadow-md px-3 py-2 rounded-3xl justify-between">
-                                                                            <lord-icon class="w-8 h-8"
-                                                                                src="https://cdn.lordicon.com/mrdiiocb.json"
-                                                                                trigger="loop" delay="2000"
-                                                                                colors="primary:#fff">
-                                                                            </lord-icon>
-                                                                            <span x-text="$t('AddtoApp')"></span>
-                                                                            <lord-icon class="w-8 h-8"
-                                                                                src="https://cdn.lordicon.com/mrdiiocb.json"
-                                                                                trigger="loop" delay="2000"
-                                                                                colors="primary:#fff">
-                                                                            </lord-icon>
-                                                                        </button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -4596,7 +4411,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                     </div>
                                                 </div>
                                                 <div
-                                                    class="text-white bg-gradient-to-r from-teal-500 via-teal-600 to-teal-700 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all duration-300 font-medium rounded-2xl">
+                                                    class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all duration-300 font-medium rounded-2xl">
                                                     <!-- Accordion item -->
                                                     <div x-data="{ expanded: false }">
                                                         <h2>
@@ -4605,30 +4420,25 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                 class="flex items-center p-4 justify-between w-full text-left font-semibold"
                                                                 @click="expanded = !expanded" :aria-expanded="expanded"
                                                                 aria-controls="faqs-text-01">
-                                                                <div
-                                                                    class="flex items-center justify-start gap-x-2 text-lg sm:text-xl font-medium">
-                                                                    <svg width="22" height="34" viewBox="0 0 22 34"
-                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <g clip-path="url(#clip0_21_32)">
-                                                                            <path
-                                                                                d="M21.9297 23.7404C19.723 23.3556 17.5164 22.9708 15.2717 22.5791C14.4346 24.2077 12.9509 24.888 11.0333 24.8811C9.12343 24.8743 7.61681 24.2352 6.73414 22.5379C4.5503 22.9227 2.34363 23.3075 0 23.7198C0.0608736 22.9021 0.0837012 22.1324 0.19023 21.3697C0.448943 19.5349 1.27074 17.9269 2.70127 16.58C2.95237 16.3464 3.0589 16.099 3.03607 15.7348C2.84584 12.6219 3.21869 9.5777 4.55791 6.68468C5.56993 4.49945 7.05373 2.60971 9.07016 1.08418C9.57998 0.699357 10.1278 0.355768 10.6985 0.067153C10.904 -0.0359237 11.2997 -0.0153082 11.5051 0.0946402C12.8063 0.836792 13.9781 1.74387 14.9292 2.82274C16.0478 4.08714 16.9609 5.48899 17.6077 7.01452C18.7719 9.77698 19.198 12.6288 19.0078 15.563C18.9773 15.9959 19.0915 16.3258 19.4415 16.6625C21.2525 18.3736 21.9601 20.4832 21.983 22.8059C21.983 23.0739 21.9906 23.3487 21.9982 23.6167C22.0058 23.6305 21.9906 23.6442 21.9297 23.7404ZM20.1035 21.9263C20.1415 21.8232 20.1568 21.7957 20.1568 21.7682C20.1644 21.7064 20.1644 21.6377 20.1568 21.5758C20.0426 19.6723 19.3121 18.0162 17.7827 16.6694C17.6229 16.5319 17.4555 16.3052 17.4631 16.1265C17.5772 14.2986 17.6533 12.4707 17.0826 10.6841C16.7631 9.68077 16.5348 8.64313 16.0935 7.68796C15.1347 5.61268 13.7803 3.77791 11.6953 2.45853C11.0714 2.05997 11.0105 2.05997 10.4018 2.48602C7.82226 4.27268 6.21671 6.64345 5.33405 9.43339C4.67966 11.5224 4.51986 13.6527 4.69488 15.8104C4.72531 16.1815 4.60356 16.4357 4.30681 16.6831C3.43936 17.3909 2.84584 18.2705 2.45016 19.26C2.12297 20.0778 1.94795 20.923 1.93274 21.8576C3.89591 21.5071 5.77538 21.1704 7.66246 20.8337C7.78421 21.0604 7.88313 21.2666 7.99727 21.459C8.62883 22.5035 9.5952 23.1014 10.9268 23.1426C12.3041 23.1838 13.3237 22.6203 14.0314 21.5621C14.4651 20.9093 14.4651 20.9093 15.3097 21.0604C15.3478 21.0673 15.3782 21.0742 15.4162 21.0811C16.9837 21.3628 18.536 21.6445 20.1035 21.9263Z"
-                                                                                fill="white" />
-                                                                            <path
-                                                                                d="M10.9725 34C9.84633 32.4538 8.7506 30.9695 8.42341 29.176C8.17991 27.8497 9.03975 26.5716 10.3638 26.1181C11.2616 25.8088 12.2813 26.1387 12.9509 26.9289C13.5748 27.6711 13.7727 28.5232 13.5824 29.4096C13.2096 31.1276 12.1671 32.5569 10.9725 34ZM10.8736 31.7598C10.9801 31.7598 11.0866 31.7598 11.1855 31.7529C11.528 30.997 11.9008 30.2549 12.2128 29.4852C12.4411 28.9217 12.2356 28.3857 11.8856 27.9047C11.5127 27.3825 10.8355 27.3344 10.3409 27.7673C9.89198 28.159 9.64088 28.6675 9.81589 29.1966C10.1126 30.0625 10.5159 30.9008 10.8736 31.7598Z"
-                                                                                fill="white" />
-                                                                            <path
-                                                                                d="M10.9421 7.64677C12.8976 7.59867 14.4195 9.02113 14.4271 10.6429C14.4347 12.3814 12.9357 13.7627 11.041 13.7695C9.14628 13.7764 7.70814 12.4433 7.64727 10.7116C7.594 9.21354 9.22237 7.56431 10.9421 7.64677ZM12.8824 10.7528C12.8976 9.79077 12.0986 9.01425 11.0714 9.00051C10.0061 8.98677 9.06258 9.74266 9.0778 10.7253C9.09302 11.6736 9.89959 12.4227 10.9421 12.4364C12.0454 12.4433 12.8672 11.7355 12.8824 10.7528Z"
-                                                                                fill="white" />
+                                                                <div class="flex items-center justify-start gap-x-2 text-lg sm:text-xl font-medium">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 30 30">
+
+                                                                        <g class="hiddify-logo-icon" fill="white" transform="matrix(0.030128, 0, 0, 0.034963, 1.486025, -1.518997)" style="">
+                                                                        <path d="M1.000001,589.468628 C2.771058,587.061707 4.274509,584.750183 6.362225,583.253601 C13.241864,578.322021 20.152021,573.388489 27.374897,568.988220 C55.219608,552.024841 83.171227,535.236572 111.119110,518.443176 C141.035187,500.467041 170.606247,481.863831 201.104828,464.933899 C214.929230,457.259918 234.865494,466.541107 234.924423,485.493042 C235.122406,549.156616 235.144989,612.821838 234.886475,676.484924 C234.829788,690.440002 245.391037,701.913086 260.223206,701.984985 C274.388977,702.053711 288.556580,702.115295 302.721161,701.968506 C317.918945,701.810974 328.015381,690.981079 328.011902,676.448914 C327.988892,580.452637 328.029297,484.456360 327.955780,388.460144 C327.948242,378.619659 332.308350,371.746094 340.550629,366.799286 C370.069794,349.082611 399.520233,331.251404 429.032501,313.523163 C453.091003,299.071075 477.205719,284.712616 501.284760,270.294739 C508.841125,265.770172 516.504211,261.403870 523.870178,256.585632 C538.573120,246.968094 557.312561,253.509216 561.498779,270.044769 C561.896606,271.616272 561.980408,273.301849 561.980591,274.934448 C562.001221,464.260437 562.001404,653.586426 561.997070,842.912415 C561.996765,855.779602 551.851807,865.993103 539.054138,865.995056 C476.389893,866.004883 413.725555,865.932617 351.061554,866.058777 C339.268738,866.082520 327.471558,854.817749 327.812958,842.959106 C328.460114,820.478577 327.720093,797.961487 328.100830,775.468811 C328.344574,761.069580 317.821533,748.448608 301.746094,748.917236 C288.091553,749.315308 274.414001,749.153076 260.750641,748.958679 C245.373535,748.739868 234.604294,759.816284 234.886185,774.567322 C235.319138,797.224792 234.917374,819.897156 235.031677,842.562317 C235.097214,855.560181 224.483521,866.035339 211.702454,866.024109 C149.538239,865.969727 87.373932,865.967468 25.209743,866.032288 C15.220128,866.042725 8.019124,861.657166 3.011859,853.226990 C2.723829,852.742065 2.163637,852.418884 1.365048,852.010254 C1.000000,764.645752 1.000000,677.291565 1.000001,589.468628 z"></path>
+                                                                        <path d="M889.000000,851.531372 C888.231567,852.584778 887.221069,853.014587 886.732178,853.778320 C881.798279,861.485413 875.059631,866.000061 865.673218,865.999939 C803.346436,865.999268 741.019287,865.899780 678.693054,866.087830 C666.900818,866.123352 654.920288,856.007141 654.929993,842.457703 C655.041687,686.807434 655.072449,531.156921 654.870667,375.506866 C654.853882,362.568451 665.330750,350.835724 679.770569,350.904541 C731.597229,351.151520 783.425903,351.001373 835.253784,351.001343 C844.419495,351.001343 853.588867,351.164459 862.749939,350.958557 C873.330750,350.720795 881.564941,354.543854 886.973267,363.869537 C887.366882,364.548401 888.008545,365.083405 888.767456,365.342651 C889.000000,527.020874 889.000000,689.041809 889.000000,851.531372 z"></path>
+                                                                        <path d="M656.166748,196.999588 C655.488342,187.585693 662.401367,183.094833 668.852112,179.173416 C710.332825,153.957153 752.019836,129.080063 793.642639,104.097580 C813.472412,92.195572 833.224854,80.161453 853.176758,68.467796 C864.763855,61.676704 878.157593,65.093384 885.164185,75.524017 C886.155518,76.999863 887.404785,78.302521 888.767334,79.342659 C889.000000,149.354233 889.000000,219.708450 889.000000,290.531342 C888.128052,291.713898 887.018982,292.269836 886.421631,293.166656 C881.593262,300.415466 875.484985,305.065918 866.209045,305.051208 C803.724426,304.951935 741.239502,304.930023 678.755127,305.075134 C669.498352,305.096619 658.258301,298.849792 656.265869,287.214081 C657.031067,284.951599 657.928101,283.271057 657.933777,281.587494 C658.022522,255.171783 658.031799,228.755524 657.918091,202.339996 C657.910400,200.557373 656.776733,198.779617 656.166748,196.999588 z"></path>
+                                                                        <path d="M656.079346,197.418610 C656.776733,198.779617 657.910400,200.557373 657.918091,202.339996 C658.031799,228.755524 658.022522,255.171783 657.933777,281.587494 C657.928101,283.271057 657.031067,284.951599 656.215820,286.836426 C655.588745,285.500671 655.041260,283.962494 655.038147,282.423218 C654.985596,256.140381 654.979797,229.857391 655.043152,203.574631 C655.047729,201.661545 655.661499,199.749939 656.079346,197.418610 z"></path>
                                                                         </g>
-                                                                        <defs>
-                                                                            <clipPath id="clip0_21_32">
-                                                                                <rect width="22" height="34"
-                                                                                    fill="white" />
-                                                                            </clipPath>
-                                                                        </defs>
+                                                                    
                                                                     </svg>
-                                                                    <span x-text="$t('addShadowrocket')">
+                                                                    <span x-text="$t('addHiddify')">
                                                                     </span>
+                                                                    <div class="bg-gray-100 pb-1.5 px-2 pt-1 rounded-full">
+
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-yellow-500 stroke-yellow-500">
+                                                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path>
+                                                                        </svg>
+                                                                    </div>
                                                                 </div>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
@@ -4638,6 +4448,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                     <path strokeLinecap="round" strokeLinejoin="round"
                                                                         d="M4.5 15.75l7.5-7.5 7.5 7.5" />
                                                                 </svg>
+                                                                
                                                             </button>
                                                         </h2>
                                                         <div id="faqs-text-01" role="region"
@@ -4667,7 +4478,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                                         </clipPath>
                                                                                     </defs>
                                                                                 </svg>
-                                                                                <span class="text-sm">12+</span>
+                                                                                <span class="text-sm">15+</span>
                                                                             </div>
                                                                         </div>
                                                                         <div
@@ -4685,7 +4496,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                         <p x-text="$t('clickForDownload')"
                                                                             class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                         </p>
-                                                                        <a href="https://apps.apple.com/ca/app/shadowrocket/id932747118"
+                                                                        <a href="https://apps.apple.com/us/app/hiddify-proxy-vpn/id6596777532"
                                                                             class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
                                                                             <lord-icon class="w-8 h-8"
                                                                                 src="https://cdn.lordicon.com/albqovim.json"
@@ -4714,7 +4525,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                         <p x-text="$t('clickForAdd')"
                                                                             class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                         </p>
-                                                                        <button onclick="openShadowrocketURL()"
+                                                                        <a id="iOS-hiddify"
                                                                             class="flex mb-4 items-center gap-x-4 w-full bg-stone-800 shadow-md px-3 py-2 rounded-3xl justify-between">
                                                                             <lord-icon class="w-8 h-8"
                                                                                 src="https://cdn.lordicon.com/mrdiiocb.json"
@@ -4727,7 +4538,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                                 trigger="loop" delay="2000"
                                                                                 colors="primary:#fff">
                                                                             </lord-icon>
-                                                                        </button>
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -5064,6 +4875,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
                                                                     <span x-text="$t('addsingbox')">
                                                                     </span>
+                                                                    <div class="bg-gray-100 pb-1.5 px-2 pt-1 rounded-full">
+
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-yellow-500 stroke-yellow-500">
+                                                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path>
+                                                                        </svg>
+                                                                    </div>
                                                                 </div>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
@@ -5362,7 +5179,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                     </div>
                                                 </div>
                                                 <div
-                                                    class="text-white bg-gradient-to-r from-rose-500 via-rose-600 to-rose-700 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all duration-300 font-medium rounded-2xl">
+                                                    class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all duration-300 font-medium rounded-2xl">
                                                     <!-- Accordion item -->
                                                     <div x-data="{ expanded: false }">
                                                         <h2>
@@ -5371,16 +5188,25 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                 class="flex items-center p-4 justify-between w-full text-left font-semibold"
                                                                 @click="expanded = !expanded" :aria-expanded="expanded"
                                                                 aria-controls="faqs-text-01">
-                                                                <div
-                                                                    class="flex items-center justify-start gap-x-2 text-lg sm:text-xl font-medium">
-                                                                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"
-                                                                        xmlns="http://www.w3.org/2000/svg">
-                                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                            d="M9.17 1.165C9.07551 0.997296 8.92015 0.872344 8.73609 0.816007C8.55202 0.75967 8.35334 0.776261 8.18117 0.862346C8.009 0.948432 7.87652 1.09742 7.81115 1.27847C7.74578 1.45953 7.75253 1.65878 7.83 1.835L8.667 3.51C8.00017 3.9556 7.42938 4.53028 6.98832 5.20012C6.54726 5.86996 6.24487 6.62137 6.099 7.41L5.99 8H18.01L17.901 7.41C17.7551 6.62137 17.4527 5.86996 17.0117 5.20012C16.5706 4.53028 15.9998 3.9556 15.333 3.51L16.171 1.835C16.258 1.65726 16.2713 1.45232 16.2078 1.26486C16.1444 1.07739 16.0095 0.922596 15.8324 0.834197C15.6553 0.745798 15.4505 0.730964 15.2626 0.792928C15.0746 0.854892 14.9188 0.988631 14.829 1.165L13.992 2.839C13.352 2.61401 12.6784 2.49938 12 2.5C11.3216 2.49938 10.648 2.61401 10.008 2.839L9.17 1.165ZM3.5 9C3.10218 9 2.72064 9.15804 2.43934 9.43934C2.15804 9.72064 2 10.1022 2 10.5V15.5C2 15.8978 2.15804 16.2794 2.43934 16.5607C2.72064 16.842 3.10218 17 3.5 17C3.89782 17 4.27936 16.842 4.56066 16.5607C4.84196 16.2794 5 15.8978 5 15.5V10.5C5 10.1022 4.84196 9.72064 4.56066 9.43934C4.27936 9.15804 3.89782 9 3.5 9ZM20.5 9C20.1022 9 19.7206 9.15804 19.4393 9.43934C19.158 9.72064 19 10.1022 19 10.5V15.5C19 15.8978 19.158 16.2794 19.4393 16.5607C19.7206 16.842 20.1022 17 20.5 17C20.8978 17 21.2794 16.842 21.5607 16.5607C21.842 16.2794 22 15.8978 22 15.5V10.5C22 10.1022 21.842 9.72064 21.5607 9.43934C21.2794 9.15804 20.8978 9 20.5 9ZM18 9H6V17.5C6 17.8978 6.15804 18.2794 6.43934 18.5607C6.72064 18.842 7.10218 19 7.5 19H8V21.5C8 21.8978 8.15804 22.2794 8.43934 22.5607C8.72064 22.842 9.10218 23 9.5 23C9.89782 23 10.2794 22.842 10.5607 22.5607C10.842 22.2794 11 21.8978 11 21.5V19H13V21.5C13 21.8978 13.158 22.2794 13.4393 22.5607C13.7206 22.842 14.1022 23 14.5 23C14.8978 23 15.2794 22.842 15.5607 22.5607C15.842 22.2794 16 21.8978 16 21.5V19H16.5C16.8978 19 17.2794 18.842 17.5607 18.5607C17.842 18.2794 18 17.8978 18 17.5V9Z"
-                                                                            fill="white" />
+                                                                <div class="flex items-center justify-start gap-x-2 text-lg sm:text-xl font-medium">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 30 30">
+
+                                                                        <g class="hiddify-logo-icon" fill="white" transform="matrix(0.030128, 0, 0, 0.034963, 1.486025, -1.518997)" style="">
+                                                                        <path d="M1.000001,589.468628 C2.771058,587.061707 4.274509,584.750183 6.362225,583.253601 C13.241864,578.322021 20.152021,573.388489 27.374897,568.988220 C55.219608,552.024841 83.171227,535.236572 111.119110,518.443176 C141.035187,500.467041 170.606247,481.863831 201.104828,464.933899 C214.929230,457.259918 234.865494,466.541107 234.924423,485.493042 C235.122406,549.156616 235.144989,612.821838 234.886475,676.484924 C234.829788,690.440002 245.391037,701.913086 260.223206,701.984985 C274.388977,702.053711 288.556580,702.115295 302.721161,701.968506 C317.918945,701.810974 328.015381,690.981079 328.011902,676.448914 C327.988892,580.452637 328.029297,484.456360 327.955780,388.460144 C327.948242,378.619659 332.308350,371.746094 340.550629,366.799286 C370.069794,349.082611 399.520233,331.251404 429.032501,313.523163 C453.091003,299.071075 477.205719,284.712616 501.284760,270.294739 C508.841125,265.770172 516.504211,261.403870 523.870178,256.585632 C538.573120,246.968094 557.312561,253.509216 561.498779,270.044769 C561.896606,271.616272 561.980408,273.301849 561.980591,274.934448 C562.001221,464.260437 562.001404,653.586426 561.997070,842.912415 C561.996765,855.779602 551.851807,865.993103 539.054138,865.995056 C476.389893,866.004883 413.725555,865.932617 351.061554,866.058777 C339.268738,866.082520 327.471558,854.817749 327.812958,842.959106 C328.460114,820.478577 327.720093,797.961487 328.100830,775.468811 C328.344574,761.069580 317.821533,748.448608 301.746094,748.917236 C288.091553,749.315308 274.414001,749.153076 260.750641,748.958679 C245.373535,748.739868 234.604294,759.816284 234.886185,774.567322 C235.319138,797.224792 234.917374,819.897156 235.031677,842.562317 C235.097214,855.560181 224.483521,866.035339 211.702454,866.024109 C149.538239,865.969727 87.373932,865.967468 25.209743,866.032288 C15.220128,866.042725 8.019124,861.657166 3.011859,853.226990 C2.723829,852.742065 2.163637,852.418884 1.365048,852.010254 C1.000000,764.645752 1.000000,677.291565 1.000001,589.468628 z"></path>
+                                                                        <path d="M889.000000,851.531372 C888.231567,852.584778 887.221069,853.014587 886.732178,853.778320 C881.798279,861.485413 875.059631,866.000061 865.673218,865.999939 C803.346436,865.999268 741.019287,865.899780 678.693054,866.087830 C666.900818,866.123352 654.920288,856.007141 654.929993,842.457703 C655.041687,686.807434 655.072449,531.156921 654.870667,375.506866 C654.853882,362.568451 665.330750,350.835724 679.770569,350.904541 C731.597229,351.151520 783.425903,351.001373 835.253784,351.001343 C844.419495,351.001343 853.588867,351.164459 862.749939,350.958557 C873.330750,350.720795 881.564941,354.543854 886.973267,363.869537 C887.366882,364.548401 888.008545,365.083405 888.767456,365.342651 C889.000000,527.020874 889.000000,689.041809 889.000000,851.531372 z"></path>
+                                                                        <path d="M656.166748,196.999588 C655.488342,187.585693 662.401367,183.094833 668.852112,179.173416 C710.332825,153.957153 752.019836,129.080063 793.642639,104.097580 C813.472412,92.195572 833.224854,80.161453 853.176758,68.467796 C864.763855,61.676704 878.157593,65.093384 885.164185,75.524017 C886.155518,76.999863 887.404785,78.302521 888.767334,79.342659 C889.000000,149.354233 889.000000,219.708450 889.000000,290.531342 C888.128052,291.713898 887.018982,292.269836 886.421631,293.166656 C881.593262,300.415466 875.484985,305.065918 866.209045,305.051208 C803.724426,304.951935 741.239502,304.930023 678.755127,305.075134 C669.498352,305.096619 658.258301,298.849792 656.265869,287.214081 C657.031067,284.951599 657.928101,283.271057 657.933777,281.587494 C658.022522,255.171783 658.031799,228.755524 657.918091,202.339996 C657.910400,200.557373 656.776733,198.779617 656.166748,196.999588 z"></path>
+                                                                        <path d="M656.079346,197.418610 C656.776733,198.779617 657.910400,200.557373 657.918091,202.339996 C658.031799,228.755524 658.022522,255.171783 657.933777,281.587494 C657.928101,283.271057 657.031067,284.951599 656.215820,286.836426 C655.588745,285.500671 655.041260,283.962494 655.038147,282.423218 C654.985596,256.140381 654.979797,229.857391 655.043152,203.574631 C655.047729,201.661545 655.661499,199.749939 656.079346,197.418610 z"></path>
+                                                                        </g>
+                                                                    
                                                                     </svg>
-                                                                    <span x-text="$t('addNekoBox')">
+                                                                    <span x-text="$t('addHiddify')">
                                                                     </span>
+                                                                    <div class="bg-gray-100 pb-1.5 px-2 pt-1 rounded-full">
+
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-yellow-500 stroke-yellow-500">
+                                                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path>
+                                                                        </svg>
+                                                                    </div>
                                                                 </div>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
@@ -5390,6 +5216,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                     <path strokeLinecap="round" strokeLinejoin="round"
                                                                         d="M4.5 15.75l7.5-7.5 7.5 7.5" />
                                                                 </svg>
+                                                                
                                                             </button>
                                                         </h2>
                                                         <div id="faqs-text-01" role="region"
@@ -5398,67 +5225,66 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                             :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                                             <div class="overflow-hidden">
                                                                 <div class="p-4 pb-6">
-                                                                    <div
-                                                                        class="flex items-center rtl:mr-[-10px] ltr:ml-[-10px] md:rtl:mr-[-20px] md:ltr:ml-[-20px]">
-                                                                        <lord-icon
-                                                                            src="https://cdn.lordicon.com/mtdulhdc.json"
-                                                                            trigger="hover"
-                                                                            colors="primary:#fff,secondary:#fff"
-                                                                            class="w-12 h-12 md:w-20 md:h-20 ">
-                                                                        </lord-icon>
-                                                                        <h3 x-text="$t('downloadApp')"
-                                                                            class="text-xl font-black leading-none tracking-tight text-white md:text-2xl">
-                                                                        </h3>
+                                                                    <div class="flex flex-col">
+                                                                        <div
+                                                                            class="flex items-center rtl:mr-[-10px] ltr:ml-[-10px] md:rtl:mr-[-20px] md:ltr:ml-[-20px]">
+                                                                            <lord-icon
+                                                                                src="https://cdn.lordicon.com/mtdulhdc.json"
+                                                                                trigger="hover"
+                                                                                colors="primary:#fff,secondary:#fff"
+                                                                                class="w-12 h-12 md:w-20 md:h-20 ">
+                                                                            </lord-icon>
+                                                                            <h3 x-text="$t('downloadApp')"
+                                                                                class="text-xl font-black leading-none tracking-tight text-white md:text-2xl">
+                                                                            </h3>
+                                                                        </div>
+                                                                        <p x-text="$t('clickForDownload')"
+                                                                            class="text-sm mb-4 font-normal text-white lg:text-base">
+                                                                        </p>
+                                                                        <a href="https://apps.apple.com/us/app/hiddify-proxy-vpn/id6596777532"
+                                                                            class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
+                                                                            <lord-icon class="w-8 h-8"
+                                                                                src="https://cdn.lordicon.com/albqovim.json"
+                                                                                trigger="loop" delay="1500"
+                                                                                colors="primary:#fff" state="intro">
+                                                                            </lord-icon>
+                                                                            <span x-text="$t('download')"></span>
+                                                                            <lord-icon class="w-8 h-8"
+                                                                                src="https://cdn.lordicon.com/albqovim.json"
+                                                                                trigger="loop" delay="1500"
+                                                                                colors="primary:#fff" state="intro">
+                                                                            </lord-icon>
+                                                                        </a>
+                                                                        <div
+                                                                            class="flex items-center rtl:mr-[-10px] ltr:ml-[-10px] md:rtl:mr-[-20px] md:ltr:ml-[-20px]">
+                                                                            <lord-icon
+                                                                                src="https://cdn.lordicon.com/vcoyflbj.json"
+                                                                                trigger="hover"
+                                                                                colors="primary:#fff,secondary:#fff"
+                                                                                class="w-12 h-12 md:w-20 md:h-20 ">
+                                                                            </lord-icon>
+                                                                            <h3 x-text="$t('addConfigs')"
+                                                                                class="text-xl font-black leading-none tracking-tight text-white md:text-2xl">
+                                                                            </h3>
+                                                                        </div>
+                                                                        <p x-text="$t('clickForAdd')"
+                                                                            class="text-sm mb-4 font-normal text-white lg:text-base">
+                                                                        </p>
+                                                                        <a id="android-hiddify"
+                                                                            class="flex mb-4 items-center gap-x-4 w-full bg-stone-800 shadow-md px-3 py-2 rounded-3xl justify-between">
+                                                                            <lord-icon class="w-8 h-8"
+                                                                                src="https://cdn.lordicon.com/mrdiiocb.json"
+                                                                                trigger="loop" delay="2000"
+                                                                                colors="primary:#fff">
+                                                                            </lord-icon>
+                                                                            <span x-text="$t('AddtoApp')"></span>
+                                                                            <lord-icon class="w-8 h-8"
+                                                                                src="https://cdn.lordicon.com/mrdiiocb.json"
+                                                                                trigger="loop" delay="2000"
+                                                                                colors="primary:#fff">
+                                                                            </lord-icon>
+                                                                        </a>
                                                                     </div>
-                                                                    <p x-text="$t('clickForDownload')"
-                                                                        class="text-sm mb-4 font-normal text-white lg:text-base">
-                                                                    </p>
-                                                                    <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.2.3/NB4A-1.2.3-arm64-v8a.apk"
-                                                                        class=" flex mb-4 items-center gap-x-4 w-full
-                                                                        bg-gray-800 shadow-md px-3 py-2 rounded-3xl
-                                                                        justify-between">
-                                                                        <lord-icon class="w-8 h-8"
-                                                                            src="https://cdn.lordicon.com/albqovim.json"
-                                                                            trigger="loop" delay="1500"
-                                                                            colors="primary:#fff" state="intro">
-                                                                        </lord-icon>
-                                                                        <span x-text="$t('download')"></span>
-                                                                        <lord-icon class="w-8 h-8"
-                                                                            src="https://cdn.lordicon.com/albqovim.json"
-                                                                            trigger="loop" delay="1500"
-                                                                            colors="primary:#fff" state="intro">
-                                                                        </lord-icon>
-                                                                    </a>
-                                                                    <div
-                                                                        class="flex items-center rtl:mr-[-10px] ltr:ml-[-10px] md:rtl:mr-[-20px] md:ltr:ml-[-20px]">
-                                                                        <lord-icon
-                                                                            src="https://cdn.lordicon.com/vcoyflbj.json"
-                                                                            trigger="hover"
-                                                                            colors="primary:#fff,secondary:#fff"
-                                                                            class="w-12 h-12 md:w-20 md:h-20 ">
-                                                                        </lord-icon>
-                                                                        <h3 x-text="$t('addConfigs')"
-                                                                            class="text-xl font-black leading-none tracking-tight text-white md:text-2xl">
-                                                                        </h3>
-                                                                    </div>
-                                                                    <p x-text="$t('clickForAdd')"
-                                                                        class="text-sm mb-4 font-normal text-white lg:text-base">
-                                                                    </p>
-                                                                    <a id="android-nekobox" class=" flex mb-4 items-center gap-x-4 w-full
-                                                                        bg-stone-800 shadow-md px-3 py-2 rounded-3xl
-                                                                        justify-between">
-                                                                        <lord-icon class="w-8 h-8"
-                                                                            src="https://cdn.lordicon.com/mrdiiocb.json"
-                                                                            trigger="loop" delay="2000"
-                                                                            colors="primary:#fff">
-                                                                        </lord-icon>
-                                                                        <span x-text="$t('AddtoApp')"></span>
-                                                                        <lord-icon class="w-8 h-8"
-                                                                            src="https://cdn.lordicon.com/mrdiiocb.json"
-                                                                            trigger="loop" delay="2000"
-                                                                            colors="primary:#fff">
-                                                                        </lord-icon>
-                                                                    </a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -5794,6 +5620,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
                                                                     <span x-text="$t('addsingbox')">
                                                                     </span>
+                                                                    <div class="bg-gray-100 pb-1.5 px-2 pt-1 rounded-full">
+
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-yellow-500 stroke-yellow-500">
+                                                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path>
+                                                                        </svg>
+                                                                    
+                                                                    
+                                                                    </div>
                                                                 </div>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
@@ -5997,7 +5831,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                     </div>
                                                 </div>
                                                 <div
-                                                    class="text-white bg-gradient-to-r from-zinc-500 via-zinc-600 to-zinc-700 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all duration-300 font-medium rounded-2xl">
+                                                    class="text-white bg-gradient-to-r from-rose-500 via-rose-600 to-rose-700 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all duration-300 font-medium rounded-2xl">
                                                     <!-- Accordion item -->
                                                     <div x-data="{ expanded: false }">
                                                         <h2>
@@ -6068,7 +5902,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                     </div>
                                                 </div>
                                                 <div
-                                                    class="text-white bg-gradient-to-r from-rose-500 via-rose-600 to-rose-700 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all duration-300 font-medium rounded-2xl">
+                                                    class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 transition-all duration-300 font-medium rounded-2xl">
                                                     <!-- Accordion item -->
                                                     <div x-data="{ expanded: false }">
                                                         <h2>
@@ -6079,14 +5913,26 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                 aria-controls="faqs-text-01">
                                                                 <div
                                                                     class="flex items-center justify-start gap-x-2 text-lg sm:text-xl font-medium">
-                                                                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"
-                                                                        xmlns="http://www.w3.org/2000/svg">
-                                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                            d="M22.25 12.75V23.424L10.75 21.004V12.75H22.25ZM22.25 11.25V0.576L10.75 2.996V11.25H22.25ZM9.25 3.313L1.75 4.89V11.249H9.25V3.313ZM1.75 12.75H9.25V20.688L1.75 19.108V12.75Z"
-                                                                            fill="white" />
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 30 30">
+
+                                                                        <g class="hiddify-logo-icon" fill="white" transform="matrix(0.030128, 0, 0, 0.034963, 1.486025, -1.518997)" style="">
+                                                                        <path d="M1.000001,589.468628 C2.771058,587.061707 4.274509,584.750183 6.362225,583.253601 C13.241864,578.322021 20.152021,573.388489 27.374897,568.988220 C55.219608,552.024841 83.171227,535.236572 111.119110,518.443176 C141.035187,500.467041 170.606247,481.863831 201.104828,464.933899 C214.929230,457.259918 234.865494,466.541107 234.924423,485.493042 C235.122406,549.156616 235.144989,612.821838 234.886475,676.484924 C234.829788,690.440002 245.391037,701.913086 260.223206,701.984985 C274.388977,702.053711 288.556580,702.115295 302.721161,701.968506 C317.918945,701.810974 328.015381,690.981079 328.011902,676.448914 C327.988892,580.452637 328.029297,484.456360 327.955780,388.460144 C327.948242,378.619659 332.308350,371.746094 340.550629,366.799286 C370.069794,349.082611 399.520233,331.251404 429.032501,313.523163 C453.091003,299.071075 477.205719,284.712616 501.284760,270.294739 C508.841125,265.770172 516.504211,261.403870 523.870178,256.585632 C538.573120,246.968094 557.312561,253.509216 561.498779,270.044769 C561.896606,271.616272 561.980408,273.301849 561.980591,274.934448 C562.001221,464.260437 562.001404,653.586426 561.997070,842.912415 C561.996765,855.779602 551.851807,865.993103 539.054138,865.995056 C476.389893,866.004883 413.725555,865.932617 351.061554,866.058777 C339.268738,866.082520 327.471558,854.817749 327.812958,842.959106 C328.460114,820.478577 327.720093,797.961487 328.100830,775.468811 C328.344574,761.069580 317.821533,748.448608 301.746094,748.917236 C288.091553,749.315308 274.414001,749.153076 260.750641,748.958679 C245.373535,748.739868 234.604294,759.816284 234.886185,774.567322 C235.319138,797.224792 234.917374,819.897156 235.031677,842.562317 C235.097214,855.560181 224.483521,866.035339 211.702454,866.024109 C149.538239,865.969727 87.373932,865.967468 25.209743,866.032288 C15.220128,866.042725 8.019124,861.657166 3.011859,853.226990 C2.723829,852.742065 2.163637,852.418884 1.365048,852.010254 C1.000000,764.645752 1.000000,677.291565 1.000001,589.468628 z"></path>
+                                                                        <path d="M889.000000,851.531372 C888.231567,852.584778 887.221069,853.014587 886.732178,853.778320 C881.798279,861.485413 875.059631,866.000061 865.673218,865.999939 C803.346436,865.999268 741.019287,865.899780 678.693054,866.087830 C666.900818,866.123352 654.920288,856.007141 654.929993,842.457703 C655.041687,686.807434 655.072449,531.156921 654.870667,375.506866 C654.853882,362.568451 665.330750,350.835724 679.770569,350.904541 C731.597229,351.151520 783.425903,351.001373 835.253784,351.001343 C844.419495,351.001343 853.588867,351.164459 862.749939,350.958557 C873.330750,350.720795 881.564941,354.543854 886.973267,363.869537 C887.366882,364.548401 888.008545,365.083405 888.767456,365.342651 C889.000000,527.020874 889.000000,689.041809 889.000000,851.531372 z"></path>
+                                                                        <path d="M656.166748,196.999588 C655.488342,187.585693 662.401367,183.094833 668.852112,179.173416 C710.332825,153.957153 752.019836,129.080063 793.642639,104.097580 C813.472412,92.195572 833.224854,80.161453 853.176758,68.467796 C864.763855,61.676704 878.157593,65.093384 885.164185,75.524017 C886.155518,76.999863 887.404785,78.302521 888.767334,79.342659 C889.000000,149.354233 889.000000,219.708450 889.000000,290.531342 C888.128052,291.713898 887.018982,292.269836 886.421631,293.166656 C881.593262,300.415466 875.484985,305.065918 866.209045,305.051208 C803.724426,304.951935 741.239502,304.930023 678.755127,305.075134 C669.498352,305.096619 658.258301,298.849792 656.265869,287.214081 C657.031067,284.951599 657.928101,283.271057 657.933777,281.587494 C658.022522,255.171783 658.031799,228.755524 657.918091,202.339996 C657.910400,200.557373 656.776733,198.779617 656.166748,196.999588 z"></path>
+                                                                        <path d="M656.079346,197.418610 C656.776733,198.779617 657.910400,200.557373 657.918091,202.339996 C658.031799,228.755524 658.022522,255.171783 657.933777,281.587494 C657.928101,283.271057 657.031067,284.951599 656.215820,286.836426 C655.588745,285.500671 655.041260,283.962494 655.038147,282.423218 C654.985596,256.140381 654.979797,229.857391 655.043152,203.574631 C655.047729,201.661545 655.661499,199.749939 656.079346,197.418610 z"></path>
+                                                                        </g>
+                                                                    
                                                                     </svg>
-                                                                    <span x-text="$t('addClashVerge')">
+                                                                    <span x-text="$t('addHiddify')">
                                                                     </span>
+                                                                    <div class="bg-gray-100 pb-1.5 px-2 pt-1 rounded-full">
+
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-yellow-500 stroke-yellow-500">
+                                                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path>
+                                                                        </svg>
+                                                                    
+                                                                    
+                                                                    </div>
                                                                 </div>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
@@ -6119,7 +5965,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                     <p x-text="$t('clickForDownload')"
                                                                         class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                     </p>
-                                                                    <a href="https://github.com/zzzgydi/clash-verge/releases/download/v1.3.7/Clash.Verge_1.3.7_x64_en-US.msi"
+                                                                    <a href="https://github.com/hiddify/hiddify-next/releases/latest/download/Hiddify-Windows-Setup-x64.exe"
                                                                         class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
                                                                         <lord-icon class="w-8 h-8"
                                                                             src="https://cdn.lordicon.com/albqovim.json"
@@ -6149,7 +5995,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                         class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                         برای اضافه کردن کانفیگ‌ ها داخل برنامه روی لینک
                                                                         زیر کلیک کنید.</p>
-                                                                    <a id="windows-clashverge" class=" flex mb-4 items-center gap-x-4 w-full
+                                                                    <a id="windows-hiddify" class=" flex mb-4 items-center gap-x-4 w-full
                                                                         bg-stone-800 shadow-md px-3 py-2 rounded-3xl
                                                                         justify-between">
                                                                         <lord-icon class="w-8 h-8"
@@ -6200,6 +6046,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                         </div>
                                         <span x-text="$t('myConfigs')">
                                         </span>
+                                        
                                     </div>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" :class="{'!rotate-180': expanded}"
