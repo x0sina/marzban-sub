@@ -9,6 +9,7 @@
 - [Features](#features)
 - [Installation Steps](#installation-steps)
 - [Default Language](#default-language)
+- [Personalization](#personalization)
 - [Host Version](#host-version)
 
 # Introduction
@@ -23,8 +24,8 @@ A simple HTML template for better display of user information.
 
 # Installation Steps
 1. Download the template file:
-```sh
-sudo wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
+   ```sh
+   sudo wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
 
 	2.	Run the following commands in your server terminal:
 
@@ -36,9 +37,12 @@ Alternatively, uncomment the following values in the .env file located in /opt/m
 CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"
 SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
 
+
 	3.	Restart Marzban:
 
 marzban restart
+
+
 
 Update
 
@@ -62,6 +66,7 @@ To customize the Telegram ID, background image, and user logo:
 	1.	Open the HTML file using nano:
 
 nano /var/lib/marzban/templates/subscription/index.html
+
 
 	2.	Use Ctrl + W to search for and replace the following values:
 	•	Telegram Support ID: Search for:
