@@ -1,169 +1,100 @@
 <p align="center">
   <a href="https://github.com/x0sina/marzban-sub" target="_blank" rel="noopener noreferrer">
-    <img src="https://raw.githubusercontent.com/x0sina/marzban-sub/main/PreviewTemplate.png" title="Marzba-Sub"/>
+    <img src="https://raw.githubusercontent.com/x0sina/marzban-sub/main/PreviewTemplate.png" title="Marzban-Sub"/>
   </a>
 </p>
-<h1 align="center"/>قالب سابسکریپشن برای پنل  <a href="https://github.com/Gozargah/Marzban">مرزبان</a></h1>
+<h1 align="center">Subscription Template for <a href="https://github.com/Gozargah/Marzban">Marzban Panel</a></h1>
 
-## فهرست مطالب
-- [ویژگی‌ ها](#ویژگی-ها)
-- [مراحل نصب](#مراحل-نصب)
-- [زبان پیش فرض](#زبان-پیش-فرض)
--  [نسخه هاست](#نسخه-هاست)
-
-# مقدمه
-یک قالب html ساده برای نمایش بهتر اطلاعات کاربر
-
-# ویژگی ها
-- افزودن سریع لینک سابسکریپشن به برنامه ها
-- لینک دانلود اپلیکیشن های مورد نیاز
-- سه زبانه (روسی,انگلیسی,فارسی)
-- پیج ساب فانتزی با رنگ و لعاب زیبا
-- دریافت کانفیگ ها با آیکون کپی در آخر صفحه
-
-# مراحل نصب
-1. دانلود فایل template
-```sh
-sudo wget -N -P /var/lib/marzban/templates/subscription/  https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
-```
-
-2. دستورات زیر رو تو ترمینال سرورتون بزنید:
-```sh
-echo 'CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"' | sudo tee -a /opt/marzban/.env
-echo 'SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"' | sudo tee -a /opt/marzban/.env
-```
-یا مقادیر زیر رو در فایل `.env` در پوشه `/opt/marzban` با پاک کردن # اول آنها از حالت کامنت در بیارید.
-```sh
-CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"
-SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
-```
-
-3. ری استارت مرزبان
-```sh
-marzban restart
-```
-
-
-## بروزرسانی
-برای بروزرسانی تمپلیت فقط کافیست مرحله 1 را تکرار کنید.
-
-# زبان پیش فرض
-برای عوض کردن زبان پیش فرض کافیست در فایل html به آخر کد مراجعه کنید و زبان مورد نظرتونو توی تگ select بالا بیارین. مثال:
-```
-<select id="countries" class="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white :focus:ring-blue-500 :focus:border blue-500">
-  <option value="fa">فارسی</option>
-  <option value="en">English</option>
-  <option value="ru">Русский</option>
-</select>
-```
-در این مثال زبان اصلی فارسی است.
-
-# شخصی سازی
-برای شخصی سازی ایدی تلگرام, تصویر پس زمینه و لوگوی کاربر باید تغییراتی در فایل html لحاظ شود که با سرچ کردن برخی مقادیر امکان پذیره.
-برای سرچ کردن با استفاده از nano ابتدا فایل را با nano با دستور زیر باز کنید:
-```
-nano /var/lib/marzban/templates/subscription/index.html
-```
-سپس با دکمه های ترکیبی Ctrl + W سرچ بار رو باز کنید و برای عوض کردن ایدی پشتیبانی تلگرام عبارت زیر رو سرچ کنید:
-```
-https://t.me/yourID
-```
-برای لوگوی کاربر این عبارتو سرچ کنید:
-```
-images/marzban.svg
-```
-برای تصویر پس زمینه این عبارتو سرچ کنید:
-```
-background: url('https://4kwallpapers.com
-```
-پس از اعمال تغییرات فایل رو سیو کنید و مرزبان رو ریستارت کنید.
-
-## نسخه هاست
-برای استفاده از نسخه هاست فولدر sub رو در هاست آپلود کنید و در فایل index.php مقدار BASE_URL را مانند مثال زیر به آدرس پنل خود تغییر دهید. یادتون باشه اگر برای دامنه پنلتون سرتیفیکیت ندارین کلمه اول رو http بزارید.
-```
-const BASE_URL = "https://BaseUrl:PORT";
-```
-
-## کپی رایت
-این قالب بر اساس طرح <a href="https://github.com/Gozargah/Marzban">Marzban Templates<a> ساخته شده.
-
-# Table of Contents
-- [Attributes](#Attributes)
-- [Installation Steps](#Install-Steps)
-- [Default Language](#Default-Language)
-- [Personalization](#Personalization)
-- [Host Version](#Host-Version)
+## Table of Contents
+- [Features](#features)
+- [Installation Steps](#installation-steps)
+- [Default Language](#default-language)
+- [Personalization](#personalization)
+- [Host Version](#host-version)
 
 # Introduction
-A simple html template to better display user information
+A simple HTML template for better display of user information.
 
-# Attributes
-- Quickly add subscription links to programs
-- The link to download the required applications
-- Three languages (Russian, English, Persian)
-- Sub fantasy page with beautiful color and glaze
-- Receive the configs with the copy icon at the bottom of the page
+# Features
+- Quick addition of subscription links to apps.
+- Links for downloading required applications.
+- Supports three languages: Russian, English, Persian.
+- Fancy subscription page with an appealing design.
+- Ability to copy configurations with a copy icon at the bottom of the page.
+
 # Installation Steps
-1. Download File Template
-```sh
-sudo wget -N -P /var/lib/marzban/templates/subscription/  https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
-```
+1. Download the template file:
+   ```sh
+   sudo wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
 
-2. Enter the following commands in your server's terminal:
-```sh
+	2.	Run the following commands in your server terminal:
+
 echo 'CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"' | sudo tee -a /opt/marzban/.env
 echo 'SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"' | sudo tee -a /opt/marzban/.env
-```
-Or uncomment the following values in `.env` file in `/opt/marzban` folder by removing # at the begining of them.
-```sh
+
+Alternatively, uncomment the following values in the .env file located in /opt/marzban by removing the # symbol:
+
 CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"
 SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
-```
 
-3. Restart Marzban
-```sh
+
+	3.	Restart Marzban:
+
 marzban restart
-```
 
-## Update
-To update the template, just repeat step 1.
 
-# Default Language
-To change the default language, just refer to the end of the code in the html file and select the desired language in the select tag. Example:
-```
-<select id="countries" class="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white :focus:ring-blue-500 :focus:border blue-500">
-  <option value="en">English</option>
+
+Update
+
+To update the template, repeat step 1.
+
+Default Language
+
+To change the default language, go to the end of the HTML file and adjust the select tag for your preferred language. Example:
+
+<select id="countries" class="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white">
   <option value="fa">فارسی</option>
+  <option value="en">English</option>
   <option value="ru">Русский</option>
 </select>
-```
-In this example, the main language is English.
 
-# Personalization
-To personalize the Telegram ID, background image and user logo, changes must be included in the html file, which is possible by searching for some values.
-To search using nano, first open the file with nano with the following command:
-```
+In this example, the default language is Persian.
+
+Personalization
+
+To customize the Telegram ID, background image, and user logo:
+	1.	Open the HTML file using nano:
+
 nano /var/lib/marzban/templates/subscription/index.html
-```
-Then open the search bar with Ctrl + W combination buttons and search for the following phrase to change Telegram support ID:
-```
+
+
+	2.	Use Ctrl + W to search for and replace the following values:
+	•	Telegram Support ID: Search for:
+
 https://t.me/yourID
-```
-Search for the user's logo:
-```
+
+
+	•	User Logo: Search for:
+
 images/marzban.svg
-```
-Search for the background image:
-```
+
+
+	•	Background Image: Search for:
+
 background: url('https://4kwallpapers.com
-```
-After making changes, save the file and restart Marzban.
 
-## Host Version
-To use the host version, upload the sub folder to the host and change the value of BASE_URL to your panel address in the index.php file just like the following example. Remember to write http if you don't have an SSL for your panel domain.
-```
+
+	3.	Save the changes and restart Marzban.
+
+Host Version
+
+To use the host version, upload the sub folder to your host, then edit the BASE_URL value in the index.php file to match your panel address. Example:
+
 const BASE_URL = "https://BaseUrl:PORT";
-```
 
-## Copyright
-This template is based on <a href="https://github.com/Gozargah/Marzban">Marzban Templates<a> design.
+If you don’t have an SSL certificate for your panel domain, use http.
+
+Copyright
+
+This template is based on the design of Marzban Templates.
+
