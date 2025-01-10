@@ -29,14 +29,14 @@ A simple HTML template for better display of user information.
    sudo wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
    ```
 
-	2.	Run the following commands in your server terminal:
+2.	Run the following commands in your server terminal:
 
 ```sh
 echo 'CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"' | sudo tee -a /opt/marzban/.env
 echo 'SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"' | sudo tee -a /opt/marzban/.env
 ```
 
-Alternatively, uncomment the following values in the .env file located in /opt/marzban by removing the # symbol:
+Alternatively, uncomment the following values in the `.env` file located in /opt/marzban by removing the # symbol:
 
 ```sh
 CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"
@@ -44,7 +44,7 @@ SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
 ```
 
 3. Restart marzban
-```sh
+```
 sudo marzban restart
 ```
 
@@ -64,39 +64,32 @@ To change the default language, go to the end of the HTML file and adjust the se
 
 In this example, the default language is Persian.
 
-##Personalization
-To customize the Telegram ID, background image, and user logo:
-
-1. Open the HTML file using nano:
-```sh
+# Personalization
+To personalize the Telegram ID, background image and user logo, changes must be included in the html file, which is possible by searching for some values.
+To search using nano, first open the file with nano with the following command:
+```
 nano /var/lib/marzban/templates/subscription/index.html
 ```
-
-	2.	Use Ctrl + W to search for and replace the following values:
-	•	Telegram Support ID: Search for:
-
+Then open the search bar with Ctrl + W combination buttons and search for the following phrase to change Telegram support ID:
+```
 https://t.me/yourID
-
-
-	•	User Logo: Search for:
-
+```
+Search for the user's logo:
+```
 images/marzban.svg
-
-
-	•	Background Image: Search for:
-
+```
+Search for the background image:
+```
 background: url('https://4kwallpapers.com
+```
+After making changes, save the file and restart Marzban.
 
-
-	3.	Save the changes and restart Marzban.
-
-Host Version
-
-To use the host version, upload the sub folder to your host, then edit the BASE_URL value in the index.php file to match your panel address. Example:
-
+##Host Version
+To use the host version, upload the sub folder to the host and change the value of BASE_URL to your panel address in the index.php file just like the following example. Remember to write http if you don't have an SSL for your panel domain.
+```
 const BASE_URL = "https://BaseUrl:PORT";
-
-If you don’t have an SSL certificate for your panel domain, use http.
+```
+If you dont have an SSL certificate for your panel domain, use http.
 
 Copyright
 
