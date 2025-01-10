@@ -92,5 +92,5 @@ const BASE_URL = "https://BaseUrl:PORT";
 If you dont have an SSL certificate for your panel domain, use http.
 
 Copyright
-
-This template is based on the design of Marzban Templates.
+## Copyright
+This template is based on <a href="https://github.com/Gozargah/Marzban">Marzban Templates<a> design.
