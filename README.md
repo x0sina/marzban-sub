@@ -48,10 +48,10 @@ SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
 sudo marzban restart
 ```
 
-##Update
+## Update
 To update the template, repeat step 1.
 
-##Default Language
+## Default Language
 To change the default language, go to the end of the HTML file and adjust the select tag for your preferred language. Example:
 
 ```sh
@@ -84,7 +84,7 @@ background: url('https://4kwallpapers.com
 ```
 After making changes, save the file and restart Marzban.
 
-##Host Version
+## Host Version
 To use the host version, upload the sub folder to the host and change the value of BASE_URL to your panel address in the index.php file just like the following example. Remember to write http if you don't have an SSL for your panel domain.
 ```
 const BASE_URL = "https://BaseUrl:PORT";
