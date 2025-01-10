@@ -1,4 +1,4 @@
-English l Persian
+English l [Persian](/persianREADME.md)
 <p align="center">
   <a href="https://github.com/x0sina/marzban-sub" target="_blank" rel="noopener noreferrer">
     <img src="https://raw.githubusercontent.com/x0sina/marzban-sub/main/PreviewTemplate.png" title="Marzban-Sub"/>
