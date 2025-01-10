@@ -1,3 +1,4 @@
+English l Persian
 <p align="center">
   <a href="https://github.com/x0sina/marzban-sub" target="_blank" rel="noopener noreferrer">
     <img src="https://raw.githubusercontent.com/x0sina/marzban-sub/main/PreviewTemplate.png" title="Marzban-Sub"/>
@@ -26,47 +27,50 @@ A simple HTML template for better display of user information.
 1. Download the template file:
    ```sh
    sudo wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/x0sina/marzban-sub/main/index.html
+   ```
 
 	2.	Run the following commands in your server terminal:
 
+```sh
 echo 'CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"' | sudo tee -a /opt/marzban/.env
 echo 'SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"' | sudo tee -a /opt/marzban/.env
+```
 
 Alternatively, uncomment the following values in the .env file located in /opt/marzban by removing the # symbol:
 
+```sh
 CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"
 SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
+```
 
+3. Restart marzban
+```sh
+sudo marzban restart
+```
 
-	3.	Restart Marzban:
-
-marzban restart
-
-
-
-Update
-
+##Update
 To update the template, repeat step 1.
 
-Default Language
-
+##Default Language
 To change the default language, go to the end of the HTML file and adjust the select tag for your preferred language. Example:
 
+```sh
 <select id="countries" class="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white">
   <option value="fa">فارسی</option>
   <option value="en">English</option>
   <option value="ru">Русский</option>
 </select>
+```
 
 In this example, the default language is Persian.
 
-Personalization
-
+##Personalization
 To customize the Telegram ID, background image, and user logo:
-	1.	Open the HTML file using nano:
 
+1. Open the HTML file using nano:
+```sh
 nano /var/lib/marzban/templates/subscription/index.html
-
+```
 
 	2.	Use Ctrl + W to search for and replace the following values:
 	•	Telegram Support ID: Search for:
@@ -97,4 +101,3 @@ If you don’t have an SSL certificate for your panel domain, use http.
 Copyright
 
 This template is based on the design of Marzban Templates.
-
