@@ -56,9 +56,8 @@ To change the default language, go to the end of the HTML file and adjust the se
 
 ```sh
 <select id="countries" class="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white">
-  <option value="fa">فارسی</option>
   <option value="en">English</option>
-  <option value="ru">Русский</option>
+  <option value="my">မြန်မာ</option>
 </select>
 ```
 
